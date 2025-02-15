@@ -25,7 +25,7 @@ class BoxDrawable(Drawable):
         painter.setPen(pen)
         painter.drawRect(self.rect)
         # Optionally draw the box name.
-        painter.drawText(self.rect, Qt.AlignCenter, self.metadata.get("name", ""))
+        painter.drawText(self.rect, Qt.AlignLeft & Qt.AlignTop, self.metadata.get("name", ""))
         pass
 
     def contains(self, point: QPointF) -> bool:
