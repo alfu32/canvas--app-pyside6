@@ -17,6 +17,7 @@ class CanvasQWidget(QWidget):
     bufferChanged = Signal(CanvasKeyEvent)  # (scale, centerPoint)
     bufferFinished = Signal(CanvasKeyEvent)  # (scale, centerPoint)
     feedbackDrawables:List[Drawable] = []
+    last_pointer_event:CanvasPointerEvent=None
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -88,7 +89,7 @@ class CanvasQWidget(QWidget):
         screenPoint=event.position()
         modelPoint = self.screen_to_model(screenPoint)
         under = [d for d in self.model.drawables if d.contains(modelPoint)]
-        return CanvasPointerEvent(
+        self.last_pointer_event =  CanvasPointerEvent(
             screenPoint=screenPoint,
             modelPoint=modelPoint,
             targetPath=under,
@@ -96,6 +97,7 @@ class CanvasQWidget(QWidget):
             qevent=event,
             model=self.model
         )
+        return self.last_pointer_event
 
 
     def mousePressEvent(self, event: QMouseEvent):
@@ -129,6 +131,8 @@ class CanvasQWidget(QWidget):
         screenPoint=event.point(0).position()
         modelPoint = self.get_transform().map(screenPoint)
         under = [d for d in self.model.drawables if d.contains(modelPoint)]
+
+
         self.zoomFinished.emit(CanvasZoomEvent(
             modelPoint=modelPoint,
             screenPoint=screenPoint,
@@ -143,6 +147,7 @@ class CanvasQWidget(QWidget):
 
     def keyReleaseEvent(self, event):
         key = event.key()
+        self.pointerMove.emit(self.last_pointer_event)
         if key in (Qt.Key_Return, Qt.Key_Enter):
             print(f"Enter pressed. raising buffer '{self.inputBuffer}'.")
             self.bufferFinished.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model))

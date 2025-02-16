@@ -1,4 +1,4 @@
-from Drawable import Drawable, BoxDrawable
+from Drawable import Drawable, BoxDrawable, LinkDrawable
 
 
 class ModelDrawable(Drawable):
@@ -11,4 +11,6 @@ class ModelDrawable(Drawable):
         self.drawables.append(drawable)
         # If it's a box, store its metadata.
         if isinstance(drawable, BoxDrawable):
+            self.metamodel[id(drawable)] = drawable.metadata
+        if isinstance(drawable, LinkDrawable):
             self.metamodel[id(drawable)] = drawable.metadata

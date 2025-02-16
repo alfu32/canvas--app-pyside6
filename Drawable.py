@@ -1,8 +1,19 @@
+import uuid
+
 from PySide6.QtCore import QPointF, QRectF, Qt
 from PySide6.QtGui import QPainter, QPen, QColor
 
 
 class Drawable:
+    id:str
+    name:str
+    metadata:dict
+
+    def __init__(self):
+        self.id=uuid.uuid4().hex.__str__()
+        self.name="DrawableName"
+        self.metadata={}
+
     def draw(self, painter: QPainter, model, canvas):
         raise NotImplementedError
 
@@ -16,6 +27,8 @@ class Drawable:
 
 class BoxDrawable(Drawable):
     def __init__(self, rect: QRectF, metadata: dict):
+        super().__init__()
+        self.name="BoxDrawable"
         self.rect = rect
         self.metadata = metadata
 
@@ -25,7 +38,7 @@ class BoxDrawable(Drawable):
         painter.setPen(pen)
         painter.drawRect(self.rect)
         # Optionally draw the box name.
-        painter.drawText(self.rect, Qt.AlignLeft & Qt.AlignTop, self.metadata.get("name", ""))
+        painter.drawText(self.rect, Qt.AlignLeft & Qt.AlignTop, self.name)
         pass
 
     def contains(self, point: QPointF) -> bool:
@@ -42,29 +55,48 @@ class BoxDrawable(Drawable):
         # validation : first matching QPoint and first matching string
         inputs=[next((x for x in _inputs if isinstance(x,QPointF)), final_inputs[0]),next((x for x in _inputs if isinstance(x,str)), None)]
 
-        rect = QRectF(inputs[0], inputs[0] + QPointF(150.0,50.0)).normalized()
-        box = BoxDrawable(rect, {"name": inputs[1]})
-        if len(_inputs) == 0:
-            return ["pick the box anchor Point."], box
-        if len(_inputs) == 1:
-            if isinstance(inputs[0],QPointF):
-                box.rect=QRectF(inputs[0], inputs[0] + QPointF(150.0,50.0)).normalized()
-                return ["start typing the box name then hit ENTER."], box
-            else:
-                return [f"input[0] was {input[0]}"], box
-        elif len(_inputs) >= 2:
-            rect = QRectF(inputs[0], inputs[0] + QPointF(150.0,50.0)).normalized()
-            box.rect = rect
-            box.metadata["name"] = inputs[1] if isinstance(inputs[1],str) else final_inputs[1]
-            return [] if inputs[1] is not None else ["enter the box name"], box
+        input_name:str=next((x for x in _inputs if isinstance(x,str)), None)
+        input_anchor:QPointF=next((x for x in _inputs if isinstance(x,QPointF)), None)
+        errors=[]
+
+        if input_anchor is None:
+            errors.append("Choose the Box Position")
+            input_anchor=QPointF(0.0,0.0)
+        if input_name is None:
+            errors.append("Choose the Box Name")
+            input_name="Box"
+
+        rect = QRectF(input_anchor, input_anchor + QPointF(150.0,50.0)).normalized()
+        box = BoxDrawable(rect, {})
+        box.name=input_name
+        return errors,box
+
+        # rect = QRectF(input_anchor, input_anchor + QPointF(150.0, 50.0)).normalized()
+        # box = BoxDrawable(rect, {})
+        # box.name = input_name
+        # if len(_inputs) == 0:
+        #     return ["pick the box anchor Point."], box
+        # if len(_inputs) == 1:
+        #     if isinstance(inputs[0], QPointF):
+        #         box.rect = QRectF(inputs[0], inputs[0] + QPointF(150.0, 50.0)).normalized()
+        #         return ["start typing the box name then hit ENTER."], box
+        #     else:
+        #         return [f"input[0] was {input[0]}"], box
+        # elif len(_inputs) >= 2:
+        #     rect = QRectF(inputs[0], inputs[0] + QPointF(150.0, 50.0)).normalized()
+        #     box.rect = rect
+        #     box.name = inputs[1] if isinstance(inputs[1], str) else final_inputs[1]
+        #     return [] if inputs[1] is not None else ["enter the box name"], box
 
 
     def __str__(self):
-        return f"""Box:{{position:[{self.rect.bottomLeft().x():.02f},{self.rect.bottomLeft().y():.02f}],name:{self.metadata["name"]} }}"""
+        return f"""Box:{{position:[{self.rect.bottomLeft().x():.02f},{self.rect.bottomLeft().y():.02f}],name:{self.name},id:{self.id} }}"""
 
 
 class LinkDrawable(Drawable):
     def __init__(self, box1: BoxDrawable, box2: BoxDrawable):
+        super().__init__()
+        self.name="link"
         self.box1 = box1
         self.box2 = box2
 
@@ -101,4 +133,4 @@ class LinkDrawable(Drawable):
         return ([], link)
 
     def __str__(self):
-        return f"""Link:{{source:{self.box1},target:{self.box2} }}"""
+        return f"""Link:{{source:{self.box1},target:{self.box2},name:{self.name},id:{self.id} }}"""
