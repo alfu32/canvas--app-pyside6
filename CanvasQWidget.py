@@ -92,7 +92,9 @@ class CanvasQWidget(QWidget):
             screenPoint=screenPoint,
             modelPoint=modelPoint,
             targetPath=under,
-            target=under[0] if len(under)>0 else None
+            target=under[0] if len(under)>0 else None,
+            qevent=event,
+            model=self.model
         )
 
 
@@ -133,8 +135,9 @@ class CanvasQWidget(QWidget):
             targetPath=under,
             target=under[0] if len(under)>0 else None,
             zoomValue=delta,
-            transformMatrix=self.get_transform()
-
+            transformMatrix=self.get_transform(),
+            qevent=event,
+            model=self.model
         ))
         self._zoomTimer.start()  # restart timer to detect zoom finish
 
@@ -142,22 +145,22 @@ class CanvasQWidget(QWidget):
         key = event.key()
         if key in (Qt.Key_Return, Qt.Key_Enter):
             print(f"Enter pressed. raising buffer '{self.inputBuffer}'.")
-            self.bufferFinished.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer))
+            self.bufferFinished.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model))
             self.inputBuffer = ""
         elif key == Qt.Key_Escape:
             print("Escape pressed. Clearing input buffer.")
             self.inputBuffer = ""
-            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer))
+            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model))
         elif key == Qt.Key_Backspace:
             print("Escape pressed. deleting last from input buffer.")
             self.inputBuffer = self.inputBuffer[:-1]
-            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer))
+            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model))
         else:
             # Append character to buffer if it's a visible character.
             char = event.text()
             if char:
                 self.inputBuffer += char
-            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer))
+            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model))
         super().keyPressEvent(event)
 
     def _onZoomFinished(self):
