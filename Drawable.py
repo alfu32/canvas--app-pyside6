@@ -1,4 +1,5 @@
 import uuid
+from math import atan2
 
 from PySide6.QtCore import QPointF, QRectF, Qt, QRect
 from PySide6.QtGui import QPainter, QPen, QColor
@@ -60,16 +61,21 @@ class BoxDrawable(Drawable):
             len([l for l in self.links if l.box1 == self]),
             len([l for l in self.links if l.box2 == self]),
         )
-        return QRectF(self.rect.topLeft(), self.rect.bottomRight() + QPointF(0,supYCount*10.0))
+        return QRectF(self.rect.topLeft(), self.rect.bottomRight() + QPointF(0,supYCount*5.0))
+
+
+    def add_link(self,link:'LinkDrawable'):
+        self.links.append(link)
+        self.links.sort(lambda l: l.get_direction())
 
     def draw(self, painter, model, canvas):
         pen = QPen(QColor("black"))
         pen.setWidth(2)
         painter.setPen(pen)
-
-        painter.drawRect(self.get_rect())
+        r=self.get_rect()
+        painter.drawRect(r)
         # Optionally draw the box name.
-        painter.drawText(self.rect, Qt.AlignLeft & Qt.AlignTop, self.name)
+        painter.drawText(self.rect.topLeft() + QPointF(5,5), self.name)
         pass
 
     def contains(self, point: QPointF) -> bool:
@@ -114,7 +120,9 @@ class BoxDrawable(Drawable):
 
     def get_outgoing_order(self, link:'LinkDrawable') -> int:
         try:
-            index = [x for x in self.links if x.box1 == self].index(link)
+            links:list[LinkDrawable] = [x for x in self.links if x.box1 == self]
+            links.sort(key=lambda l: l.get_direction())
+            index = links.index(link)
             # print("Index:", index)
             return index
         except ValueError:
@@ -123,7 +131,9 @@ class BoxDrawable(Drawable):
 
     def get_incoming_order(self, link:'LinkDrawable') -> int:
         try:
-            index = [x for x in self.links if x.box2 == self].index(link)
+            links = [x for x in self.links if x.box2 == self]
+            links.sort(key=lambda l: l.get_direction(),reverse=True)
+            index = links.index(link)
             # print("Index:", index)
             return index
         except ValueError:
@@ -139,12 +149,19 @@ class LinkDrawable(Drawable):
         self.box2 = box2
         self.metadata=metadata
 
+    def get_direction(self) -> float:
+        p1 = self.box1.rect.topRight() + QPointF(0,25) #  + QPointF(0,25 + self.box1.get_outgoing_order(self) * 5 )
+        p2 = self.box2.rect.topLeft() + QPointF(0,25)  # + QPointF(0,25 + self.box2.get_incoming_order(self) * 5 )
+
+        delta = p2 - p1 - QPointF(100,0)
+        return atan2(delta.y(),delta.x())
+
     def draw(self, painter: QPainter, model, canvas):
         pen = QPen(QColor("blue"))
         pen.setWidth(2)
         painter.setPen(pen)
-        p1 = self.box1.rect.topRight() + QPointF(0,50 + self.box1.get_outgoing_order(self) * 10 )
-        p2 = self.box2.rect.topLeft() + QPointF(0,50 + self.box2.get_incoming_order(self) * 10 )
+        p1 = self.box1.rect.topRight() + QPointF(0,25 + self.box1.get_outgoing_order(self) * 10 )
+        p2 = self.box2.rect.topLeft() + QPointF(0,25 + self.box2.get_incoming_order(self) * 10 )
 
         painter.drawLine(p1, p1+QPointF(50,0))
         painter.drawLine(p1+QPointF(50,0), p2-QPointF(50,0))

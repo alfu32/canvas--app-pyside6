@@ -1,7 +1,7 @@
 from typing import List
 
 from PySide6.QtCore import Signal, QRectF, QPointF, QTimer
-from PySide6.QtGui import QPainter, QMouseEvent, QWheelEvent, QColor, Qt, QTransform
+from PySide6.QtGui import QPainter, QMouseEvent, QWheelEvent, QColor, Qt, QTransform, QFontDatabase, QFont
 from PySide6.QtWidgets import QWidget
 
 from Drawable import Drawable
@@ -16,11 +16,19 @@ class CanvasQWidget(QWidget):
     zoomFinished = Signal(CanvasZoomEvent)  # (scale, centerPoint)
     bufferChanged = Signal(CanvasKeyEvent)  # (scale, centerPoint)
     bufferFinished = Signal(CanvasKeyEvent)  # (scale, centerPoint)
-    feedbackDrawables:List[Drawable] = []
+    # feedbackDrawables:List[Drawable] = []
     last_pointer_event:CanvasPointerEvent=None
 
     def __init__(self, parent=None):
         super().__init__(parent)
+        font_path = "./Bahnschrift-Font-Family/BAHNSCHRIFT.TTF"
+        font_id = QFontDatabase.addApplicationFont(font_path)
+        if font_id != -1:
+            family = QFontDatabase.applicationFontFamilies(font_id)[0]
+            self.custom_font = QFont(family, 12)  # Use desired size.
+        else:
+            self.custom_font = QFont("Arial", 12)  # Fallback font.
+
         self.inputBuffer=""
         self.model = ModelDrawable()
         self.setMinimumSize(400, 400)
@@ -69,10 +77,10 @@ class CanvasQWidget(QWidget):
 
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
+        painter.setFont(self.custom_font)
 
         # Fill background with white.
         painter.fillRect(self.rect(), QColor("white"))
-
         # Apply transform.
         painter.translate(self.offset)
         painter.scale(self.scale, self.scale)
@@ -81,7 +89,7 @@ class CanvasQWidget(QWidget):
         painter.fillRect(self.get_transform().mapRect(self.rect()), QColor("white"))
         for drawable in self.model.drawables:
             drawable.draw(painter, self.model, self)
-        for drawable in self.feedbackDrawables:
+        for drawable in self.model.feedbackDrawables:
             drawable.draw(painter, self.model, self)
         painter.end()
 

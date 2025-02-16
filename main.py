@@ -49,13 +49,13 @@ class MainWindow(QMainWindow):
     def on_tool_changed(self,tool:Tool,drawable:Drawable):
         print(f"Changed Tool: {tool.name} Drawable {drawable}")
         # self.currentTool = tool
-        self.canvas.feedbackDrawables = [drawable]
+        self.canvas.model.feedbackDrawables = [drawable]
         self.canvas.update()
 
     def on_tool_finished(self,tool:Tool,drawable:Drawable):
         print(f"Finished Tool: {tool.name} Drawable {drawable}")
         self.canvas.model.add_drawable(drawable)
-        self.canvas.feedbackDrawables = []
+        self.canvas.model.feedbackDrawables = []
         self.canvas.update()
 
 
@@ -112,7 +112,7 @@ class MainWindow(QMainWindow):
             print(result)
             print(self.currentTool.inputs)
             print(self.canvas.model.drawables)
-            print(self.canvas.feedbackDrawables)
+            print(self.canvas.model.feedbackDrawables)
     def onBufferChanged(self,event:CanvasKeyEvent):
         if self.currentTool:
             print(f"Setting buffer '{event.buffer}' to tool {self.currentTool.name}.")
