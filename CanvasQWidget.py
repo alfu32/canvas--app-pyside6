@@ -65,7 +65,7 @@ class CanvasQWidget(QWidget):
             return point
 
     def paintEvent(self, event):
-        print("paintEvent triggered")  # Debug statement
+        # print("paintEvent triggered")  # Debug statement
 
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
@@ -147,7 +147,7 @@ class CanvasQWidget(QWidget):
 
     def keyReleaseEvent(self, event):
         key = event.key()
-        self.pointerMove.emit(self.last_pointer_event)
+        # self.pointerMove.emit(self.last_pointer_event)
         if key in (Qt.Key_Return, Qt.Key_Enter):
             print(f"Enter pressed. raising buffer '{self.inputBuffer}'.")
             self.bufferFinished.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model,isFinished=True))

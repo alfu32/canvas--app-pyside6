@@ -16,6 +16,8 @@ class ModelDrawable(Drawable):
             self.metamodel[id(drawable)] = drawable.metadata
         if isinstance(drawable, LinkDrawable):
             self.metamodel[id(drawable)] = drawable.metadata
+            drawable.box1.links.append(drawable)
+            drawable.box2.links.append(drawable)
 
     def contains(self, point: QPointF) -> bool:
         for d in self.drawables:

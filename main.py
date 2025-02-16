@@ -1,7 +1,7 @@
 import sys
 from PySide6.QtWidgets import (
     QApplication, QWidget, QMainWindow, QPushButton,
-    QVBoxLayout, QHBoxLayout, QLabel
+    QVBoxLayout, QHBoxLayout, QLabel, QSizePolicy
 )
 from PySide6.QtCore import QRectF, Qt
 
@@ -63,24 +63,34 @@ class MainWindow(QMainWindow):
         centralWidget = QWidget()
         self.setCentralWidget(centralWidget)
         mainLayout = QVBoxLayout(centralWidget)
-        # Canvas takes most of the space.
-        mainLayout.addWidget(self.canvas)
 
 
+        # Create an info label that will have the height of one text line.
         self.infoLabel = QLabel("Input Buffer: (empty)")
-        mainLayout.addWidget(self.infoLabel)
-        # Button bar.
-        buttonBar = QHBoxLayout()
+        fontMetrics = self.infoLabel.fontMetrics()
+        lineHeight = fontMetrics.height()*2 + 4  # Add a little padding.
+        self.infoLabel.setFixedHeight(lineHeight)
+
+        # Create a button bar container with a fixed height.
+        buttonBar= QWidget()
+        buttonLayout = QHBoxLayout(buttonBar)
+        buttonLayout.setContentsMargins(0, 0, 0, 0)
+        buttonBar.setFixedHeight(lineHeight)
 
         for tool in tools_registry:
             btn=tool.create_activation_button()
+            btn.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
             # Use a lambda with a default argument to capture the current tool.
             tool.activated.connect(lambda tt: self.on_tool_activated(tt))
             tool.changed.connect(lambda tt,dd: self.on_tool_changed(tt,dd))
             tool.finished.connect(lambda tt,dd: self.on_tool_finished(tt,dd))
-            buttonBar.addWidget(btn)
+            buttonLayout.addWidget(btn)
             tool.model=self.canvas.model
-        mainLayout.addLayout(buttonBar)
+
+        mainLayout.addWidget(buttonBar)
+        # Canvas takes most of the space.
+        mainLayout.addWidget(self.canvas)
+        mainLayout.addWidget(self.infoLabel)
 
     def onPointerMove(self, event:CanvasPointerEvent):
         # print("Pointer Moved through ", screenPoint, "with drawables:", [type(d).__name__ for d in drawables])
