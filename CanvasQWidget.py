@@ -150,22 +150,22 @@ class CanvasQWidget(QWidget):
         self.pointerMove.emit(self.last_pointer_event)
         if key in (Qt.Key_Return, Qt.Key_Enter):
             print(f"Enter pressed. raising buffer '{self.inputBuffer}'.")
-            self.bufferFinished.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model))
+            self.bufferFinished.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model,isFinished=True))
             self.inputBuffer = ""
         elif key == Qt.Key_Escape:
             print("Escape pressed. Clearing input buffer.")
             self.inputBuffer = ""
-            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model))
+            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model,isFinished=False))
         elif key == Qt.Key_Backspace:
             print("Escape pressed. deleting last from input buffer.")
             self.inputBuffer = self.inputBuffer[:-1]
-            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model))
+            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model,isFinished=False))
         else:
             # Append character to buffer if it's a visible character.
             char = event.text()
             if char:
                 self.inputBuffer += char
-            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model))
+            self.bufferChanged.emit(CanvasKeyEvent(key=key,buffer=self.inputBuffer,qevent=event,model=self.model,isFinished=False))
         super().keyPressEvent(event)
 
     def _onZoomFinished(self):

@@ -79,12 +79,13 @@ class MainWindow(QMainWindow):
             tool.changed.connect(lambda tt,dd: self.on_tool_changed(tt,dd))
             tool.finished.connect(lambda tt,dd: self.on_tool_finished(tt,dd))
             buttonBar.addWidget(btn)
+            tool.model=self.canvas.model
         mainLayout.addLayout(buttonBar)
 
     def onPointerMove(self, event:CanvasPointerEvent):
         # print("Pointer Moved through ", screenPoint, "with drawables:", [type(d).__name__ for d in drawables])
         if self.currentTool is not None:
-            self.currentTool.set_last_input(event.modelPoint)
+            self.currentTool.set_last_input(event)
 
     def onPointerDown(self, event:CanvasPointerEvent):
         print("Pointer Down at", event.modelPoint, "with drawables:", [type(d).__name__ for d in event.targetPath])
@@ -95,8 +96,8 @@ class MainWindow(QMainWindow):
         print("Pointer Up at", event.modelPoint, "with drawables:", [type(d).__name__ for d in event.targetPath])
         print(self.currentTool)
         if self.currentTool is not None:
-            self.currentTool.add_input(event.modelPoint)
-            (messages,result) =self.currentTool.drawable_class.build(self.currentTool.inputs)
+            self.currentTool.add_input(event)
+            (messages,result) =self.currentTool.drawable_class.build(self.currentTool.inputs,self.canvas.model)
             print(messages)
             print(result)
             print(self.currentTool.inputs)
@@ -105,7 +106,7 @@ class MainWindow(QMainWindow):
     def onBufferChanged(self,event:CanvasKeyEvent):
         if self.currentTool:
             print(f"Setting buffer '{event.buffer}' to tool {self.currentTool.name}.")
-            self.currentTool.set_last_input(event.buffer)
+            self.currentTool.set_last_input(event)
         else:
             print(f"No tool is active to receive input {event.buffer}.")
         self.infoLabel.setText(f"Input Buffer: {event.buffer}")
@@ -113,7 +114,7 @@ class MainWindow(QMainWindow):
     def onBufferFinished(self,event:CanvasKeyEvent):
         if self.currentTool:
             print(f"Buffer finished '{event.buffer}' to tool {self.currentTool.name}.")
-            self.currentTool.add_input(event.buffer)
+            self.currentTool.add_input(event)
         else:
             print(f"No tool is active to receive input {event.buffer}.")
         self.infoLabel.setText(f"Input Buffer: {event.buffer}")

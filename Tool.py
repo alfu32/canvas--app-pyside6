@@ -3,8 +3,9 @@ from PySide6.QtCore import QPointF, QRectF, QSizeF, Qt, Signal, QObject
 from PySide6.QtGui import QPen, QColor
 from PySide6.QtWidgets import QPushButton, QWidget, QVBoxLayout, QLabel
 
-from Drawable import BoxDrawable, Drawable, LinkDrawable
-from ModelDrawable import ModelDrawable
+from Drawable import Drawable
+
+
 class Tool:
     def __init__(self, name: str, drawable_class, parent=None):
         raise NotImplementedError
@@ -30,6 +31,7 @@ class MultipointTool(QObject):
     changed = Signal(Tool,Drawable,list)
     # Emitted when enough inputs have been accumulated to build a complete drawable.
     finished = Signal(Tool,Drawable)
+    model:'ModelDrawable'
 
     def __init__(self, name: str, drawable_class, parent=None):
         super().__init__(parent)
@@ -37,10 +39,10 @@ class MultipointTool(QObject):
         self.drawable_class = drawable_class
         self.inputs = []
 
-    def add_input(self, input_value):
+    def add_input(self, event):
         """Append an input and evaluate the accumulated inputs via the drawable's build() method."""
-        self.inputs.append(input_value)
-        errors, drawable = self.drawable_class.build(self.inputs)
+        self.inputs.append(event)
+        errors, drawable = self.drawable_class.build(self.inputs,self.model)
         if errors == []:
             # Build complete, emit finished event.
             self.finished.emit(self, drawable)
@@ -50,9 +52,9 @@ class MultipointTool(QObject):
             # Build incomplete; simply notify listeners of the updated inputs.
             self.changed.emit(self,drawable,errors)
 
-    def set_last_input(self, input_value):
+    def set_last_input(self, event):
         """Append an input and evaluate the accumulated inputs via the drawable's build() method."""
-        errors, drawable = self.drawable_class.build(self.inputs + [input_value])
+        errors, drawable = self.drawable_class.build(self.inputs + [event],self.model)
         self.changed.emit(self, drawable,errors)
 
     def reset(self):

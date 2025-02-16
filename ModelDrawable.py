@@ -1,3 +1,5 @@
+from PySide6.QtCore import QPointF
+
 from Drawable import Drawable, BoxDrawable, LinkDrawable
 
 
@@ -14,3 +16,9 @@ class ModelDrawable(Drawable):
             self.metamodel[id(drawable)] = drawable.metadata
         if isinstance(drawable, LinkDrawable):
             self.metamodel[id(drawable)] = drawable.metadata
+
+    def contains(self, point: QPointF) -> bool:
+        for d in self.drawables:
+            if d.contains(point):
+                return True
+        return False
