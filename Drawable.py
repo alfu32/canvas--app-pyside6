@@ -1,8 +1,15 @@
+
+from __future__ import annotations
 import uuid
 from math import atan2
 
 from PySide6.QtCore import QPointF, QRectF, Qt, QRect
 from PySide6.QtGui import QPainter, QPen, QColor
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from ModelDrawable import ModelDrawable
 
 from events import CanvasKeyEvent, CanvasPointerEvent
 
@@ -24,7 +31,7 @@ class Drawable:
         raise NotImplementedError
 
     @staticmethod
-    def build(inputs: list,model:'ModelDrawable')  -> (list,'Drawable'):
+    def build(inputs: list,model:ModelDrawable)  -> (list,'Drawable'):
         raise NotImplementedError
 
 class NullDrawable:
@@ -44,8 +51,64 @@ class NullDrawable:
         return False
 
     @staticmethod
-    def build(inputs: list,model:'ModelDrawable')  -> (list,'Drawable'):
+    def build(inputs: list,model:ModelDrawable)  -> (list,'Drawable'):
         return ["null drawable"],NullDrawable()
+
+
+class SelectDrawable:
+    id:str
+    name:str
+    metadata:dict
+    rect:QRectF
+    selection:list[Drawable] = []
+
+    def __init__(self):
+        self.id=uuid.uuid4().hex.__str__()
+        self.name="DrawableName"
+        self.metadata={}
+        self.rect=QRectF()
+        self.selection=[]
+
+    def draw(self, painter: QPainter, model, canvas):
+        pen = QPen(QColor("black"))
+        pen.setWidth(2)
+        painter.setPen(pen)
+        painter.drawRect(self.rect)
+        # Optionally draw the box name.
+        # painter.drawText(self.rect.topLeft() + QPointF(5,15), self.name)
+
+    def contains(self, point: QPointF) -> bool:
+        return False
+
+    @staticmethod
+    def build(inputs: list,model:ModelDrawable)  -> (list,'Drawable'):
+        box = SelectDrawable()
+
+        points:list[CanvasPointerEvent]=[x for x in inputs if isinstance(x,CanvasPointerEvent)]
+        errors=[]
+        start = QPointF(0.0, 0.0)
+        end = QPointF(0.0, 0.0)
+        box.rect = QRectF(start,end).normalized()
+        box.selection=[]
+
+        if len(points) == 0:
+            errors.append("select start point")
+        elif len(points) == 1:
+            errors.append("select end point")
+            start=points[0].modelPoint
+            end=start
+            box.rect = QRectF(start,end).normalized()
+            box.selection=[]
+        elif len(points) >= 2:
+            errors.append("selection window ready")
+            start=points[0].modelPoint
+            end=points[1].modelPoint
+            box.rect = QRectF(start,end).normalized()
+            box.selection=model.find_drawables_inside(box.rect) if start.x() < end.x() else model.find_drawables_crossing(box.rect)
+
+        model.feedbackDrawables=[box]
+
+        return errors,box
 
 class BoxDrawable(Drawable):
     links:list['LinkDrawable'] = []
@@ -61,7 +124,7 @@ class BoxDrawable(Drawable):
             len([l for l in self.links if l.box1 == self]),
             len([l for l in self.links if l.box2 == self]),
         )
-        return QRectF(self.rect.topLeft(), self.rect.bottomRight() + QPointF(0,supYCount*5.0))
+        return QRectF(self.rect.topLeft(), self.rect.bottomRight() + QPointF(0,supYCount*15.0))
 
 
     def add_link(self,link:'LinkDrawable'):
@@ -75,14 +138,14 @@ class BoxDrawable(Drawable):
         r=self.get_rect()
         painter.drawRect(r)
         # Optionally draw the box name.
-        painter.drawText(self.rect.topLeft() + QPointF(5,5), self.name)
+        painter.drawText(self.rect.topLeft() + QPointF(5,15), self.name)
         pass
 
     def contains(self, point: QPointF) -> bool:
         return self.get_rect().contains(point)
 
     @staticmethod
-    def build(_inputs: list,model:'ModelDrawable') -> (list,Drawable):
+    def build(_inputs: list,model:ModelDrawable) -> (list,Drawable):
         """
         Expects: [point1 (QPointF), point2 (QPointF), text (str)]
         Returns: ([], boxDrawable) when complete, otherwise (list_of_error_messages, None)
@@ -109,6 +172,7 @@ class BoxDrawable(Drawable):
         box = BoxDrawable(rect, {})
         box.name=input_name
         return errors,box
+
     def copy(self) -> 'BoxDrawable':
         return BoxDrawable(
             rect=self.rect.__copy__(),
@@ -160,16 +224,16 @@ class LinkDrawable(Drawable):
         pen = QPen(QColor("blue"))
         pen.setWidth(2)
         painter.setPen(pen)
-        p1 = self.box1.rect.topRight() + QPointF(0,25 + self.box1.get_outgoing_order(self) * 10 )
-        p2 = self.box2.rect.topLeft() + QPointF(0,25 + self.box2.get_incoming_order(self) * 10 )
+        p1 = self.box1.rect.topRight() + QPointF(0,25 + self.box1.get_outgoing_order(self) * 15 )
+        p2 = self.box2.rect.topLeft() + QPointF(0,25 + self.box2.get_incoming_order(self) * 15 )
 
         painter.drawLine(p1, p1+QPointF(50,0))
         painter.drawLine(p1+QPointF(50,0), p2-QPointF(50,0))
         painter.drawLine(p2-QPointF(50,0), p2)
 
         # Define offsets for the text labels so they don't overlap the line.
-        offset_start = QPointF(5, -5)  # Adjust as needed for the start label.
-        offset_end = QPointF(-55, -5)  # Adjust as needed for the end label.
+        offset_start = QPointF(5, -2)  # Adjust as needed for the start label.
+        offset_end = QPointF(-55, -2)  # Adjust as needed for the end label.
 
         # Draw text at the start and end of the segment.
         painter.drawText(p1 + offset_start, self.name)
@@ -180,7 +244,7 @@ class LinkDrawable(Drawable):
         return False
 
     @staticmethod
-    def build(inputs: list,model:'ModelDrawable') -> (list,Drawable):
+    def build(inputs: list,model:ModelDrawable) -> (list,Drawable):
         """
         Expects: [box1 (BoxDrawable), box2 (BoxDrawable), link_name (str)]
         Returns: ([], linkDrawable) when complete, otherwise (list_of_error_messages, None)

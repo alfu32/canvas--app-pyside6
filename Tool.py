@@ -48,7 +48,6 @@ class MultipointTool(QObject):
             self.finished.emit(self, drawable)
             # Clear inputs for next construction.
             self.inputs = []
-            self.model.add_drawable(drawable)
         else:
             # Build incomplete; simply notify listeners of the updated inputs.
             self.changed.emit(self,drawable,errors)
