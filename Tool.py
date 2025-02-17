@@ -10,10 +10,10 @@ class Tool:
     def __init__(self, name: str, drawable_class, parent=None):
         raise NotImplementedError
 
-    def add_input(self, input_value):
+    def add_input(self, input_value,tool:'Tool'):
         raise NotImplementedError
 
-    def set_last_input(self, input_value):
+    def set_last_input(self, input_value,tool:'Tool'):
         raise NotImplementedError
 
     def reset(self):
@@ -39,12 +39,13 @@ class MultipointTool(QObject):
         self.drawable_class = drawable_class
         self.inputs = []
 
-    def add_input(self, event):
+    def add_input(self, event,tool:Tool):
         """Append an input and evaluate the accumulated inputs via the drawable's build() method."""
         self.inputs.append(event)
         errors, drawable = self.drawable_class.build(self.inputs,self.model)
         if errors == []:
             # Build complete, emit finished event.
+            # should emmit the inputs
             self.finished.emit(self, drawable)
             # Clear inputs for next construction.
             self.inputs = []
@@ -52,7 +53,7 @@ class MultipointTool(QObject):
             # Build incomplete; simply notify listeners of the updated inputs.
             self.changed.emit(self,drawable,errors)
 
-    def set_last_input(self, event):
+    def set_last_input(self, event,tool:Tool):
         """Append an input and evaluate the accumulated inputs via the drawable's build() method."""
         errors, drawable = self.drawable_class.build(self.inputs + [event],self.model)
         self.changed.emit(self, drawable,errors)

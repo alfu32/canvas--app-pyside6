@@ -11,6 +11,7 @@ class ModelDrawable(Drawable):
     feedbackDrawables:List[Drawable] = []
 
     def __init__(self):
+        self.selection = []
         self.drawables = []
         # Optionally store metamodel data for each box.
         self.metamodel = {}
@@ -31,3 +32,9 @@ class ModelDrawable(Drawable):
             if d.contains(point):
                 return True
         return False
+
+    def find_drawables_inside(self, rect):
+        return []
+
+    def find_drawables_crossing(self, rect):
+        return []

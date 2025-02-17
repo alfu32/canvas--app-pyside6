@@ -61,6 +61,7 @@ class SelectDrawable:
     metadata:dict
     rect:QRectF
     selection:list[Drawable] = []
+    rtl:bool
 
     def __init__(self):
         self.id=uuid.uuid4().hex.__str__()
@@ -68,11 +69,15 @@ class SelectDrawable:
         self.metadata={}
         self.rect=QRectF()
         self.selection=[]
+        self.rtl=True
 
     def draw(self, painter: QPainter, model, canvas):
-        pen = QPen(QColor("black"))
-        pen.setWidth(2)
+        pen = QPen(QColor(0x00,0x88,0x88,0xff))
+        pen.setWidth(1)
+        if not self.rtl:
+            pen.setStyle(Qt.DashLine)
         painter.setPen(pen)
+        painter.fillRect(self.rect,QColor(0x00,0xcc,0xcc,0x3f))
         painter.drawRect(self.rect)
         # Optionally draw the box name.
         # painter.drawText(self.rect.topLeft() + QPointF(5,15), self.name)
@@ -90,21 +95,31 @@ class SelectDrawable:
         end = QPointF(0.0, 0.0)
         box.rect = QRectF(start,end).normalized()
         box.selection=[]
+        keys:list[CanvasKeyEvent]=[x for x in inputs if isinstance(x,CanvasKeyEvent)]
+        print(len(inputs))
+        if Qt.Key_Escape in keys:
+            while len(inputs) > 0:
+                inputs.pop(0)
+                model.selection=[]
 
         if len(points) == 0:
             errors.append("select start point")
-        elif len(points) == 1:
+        elif len(points) % 2 == 1:
             errors.append("select end point")
+            points=points[-1:]
             start=points[0].modelPoint
             end=start
             box.rect = QRectF(start,end).normalized()
             box.selection=[]
-        elif len(points) >= 2:
+        elif len(points) % 2 == 0:
             errors.append("selection window ready")
+            points=points[-2:]
             start=points[0].modelPoint
             end=points[1].modelPoint
             box.rect = QRectF(start,end).normalized()
+            box.rtl=start.x() < end.x()
             box.selection=model.find_drawables_inside(box.rect) if start.x() < end.x() else model.find_drawables_crossing(box.rect)
+            model.selection.extend(box.selection)
 
         model.feedbackDrawables=[box]
 
