@@ -8,6 +8,7 @@ from PySide6.QtCore import QRectF, Qt
 import Tool
 from CanvasQWidget import CanvasQWidget
 from Drawable import BoxDrawable, LinkDrawable, Drawable
+from Tool import MultipointTool, MultipointModifierTool
 from events import CanvasPointerEvent, CanvasKeyEvent, CanvasZoomEvent
 
 from tools_registry import tools_registry
@@ -43,18 +44,21 @@ class MainWindow(QMainWindow):
         self.canvas.zoomFinished.connect(self.onZoomFinished)
 
     def on_tool_activated(self,tool:Tool):
-        print(f"Activated Tool: {tool.name}")
+        #print(f"Activated Tool: {tool.name}")
         self.currentTool = tool
 
     def on_tool_changed(self,tool:Tool,drawable:Drawable):
-        print(f"Changed Tool: {tool.name} Drawable {drawable}")
+        #print(f"Changed Tool: {tool.name} Drawable {drawable}")
         # self.currentTool = tool
         self.canvas.model.feedbackDrawables = [drawable]
         self.canvas.update()
 
     def on_tool_finished(self,tool:Tool,drawable:Drawable):
         print(f"Finished Tool: {tool.name} Drawable {drawable}")
-        self.canvas.model.add_drawable(drawable)
+        if isinstance(tool,MultipointTool):
+            self.canvas.model.add_drawable(drawable)
+        elif isinstance(tool,MultipointModifierTool):
+            tool.accept(self.canvas.model,drawable)
         self.canvas.model.feedbackDrawables = []
         self.canvas.update()
 
@@ -98,42 +102,45 @@ class MainWindow(QMainWindow):
             self.currentTool.set_last_input(event,self.currentTool)
 
     def onPointerDown(self, event:CanvasPointerEvent):
-        print("Pointer Down at", event.modelPoint, "with drawables:", [type(d).__name__ for d in event.targetPath])
+        # print("Pointer Down at", event.modelPoint, "with drawables:", [type(d).__name__ for d in event.targetPath])
         if self.currentTool is not None:
             pass
 
     def onPointerUp(self, event:CanvasPointerEvent):
-        print("Pointer Up at", event.modelPoint, "with drawables:", [type(d).__name__ for d in event.targetPath])
-        print(self.currentTool)
+        # print("Pointer Up at", event.modelPoint, "with drawables:", [type(d).__name__ for d in event.targetPath])
+        # print(self.currentTool)
         if self.currentTool is not None:
             self.currentTool.add_input(event,self.currentTool)
             (messages,result) =self.currentTool.drawable_class.build(self.currentTool.inputs,self.canvas.model)
-            print(messages)
-            print(result)
-            print(self.currentTool.inputs)
-            print(self.canvas.model.drawables)
-            print(self.canvas.model.feedbackDrawables)
+            # print(messages)
+            # print(result)
+            # print(self.currentTool.inputs)
+            # print(self.canvas.model.drawables)
+            #print(self.canvas.model.feedbackDrawables)
     def onBufferChanged(self,event:CanvasKeyEvent):
         if self.currentTool:
-            print(f"Setting buffer '{event.buffer}' to tool {self.currentTool.name}.")
+            #print(f"Setting buffer '{event.buffer}' to tool {self.currentTool.name}.")
             self.currentTool.set_last_input(event,self.currentTool)
         else:
-            print(f"No tool is active to receive input {event.buffer}.")
+            # print(f"No tool is active to receive input {event.buffer}.")
+            pass
         self.infoLabel.setText(f"Input Buffer: {event.buffer}")
         pass
     def onBufferFinished(self,event:CanvasKeyEvent):
         if self.currentTool:
-            print(f"Buffer finished '{event.buffer}' to tool {self.currentTool.name}.")
+            # print(f"Buffer finished '{event.buffer}' to tool {self.currentTool.name}.")
             self.currentTool.add_input(event,self.currentTool)
         else:
-            print(f"No tool is active to receive input {event.buffer}.")
+            # print(f"No tool is active to receive input {event.buffer}.")
+            pass
         self.infoLabel.setText(f"Input Buffer: {event.buffer}")
         pass
 
 
 
     def onZoomFinished(self, event:CanvasZoomEvent):
-        print("Zoom finished. Scale:", event.zoomValue, "Center:", event.modelPoint)
+        # print("Zoom finished. Scale:", event.zoomValue, "Center:", event.modelPoint)
+        pass
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

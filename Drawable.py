@@ -96,7 +96,7 @@ class SelectDrawable:
         box.rect = QRectF(start,end).normalized()
         box.selection=[]
         keys:list[CanvasKeyEvent]=[x for x in inputs if isinstance(x,CanvasKeyEvent)]
-        print(len(inputs))
+        # print(len(inputs))
         if Qt.Key_Escape in keys:
             while len(inputs) > 0:
                 inputs.pop(0)

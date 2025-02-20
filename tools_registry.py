@@ -1,8 +1,10 @@
-from Drawable import BoxDrawable, LinkDrawable, NullDrawable, SelectDrawable
-from Tool import MultipointTool
+from tools import select_tool
+from tools import drawable_box_tool
+from tools import link_box_tool
 
 tools_registry = [
-    MultipointTool("Select", SelectDrawable),
-    MultipointTool("Box", BoxDrawable),
-    MultipointTool("Link", LinkDrawable),
+    select_tool,
+    drawable_box_tool,
+    link_box_tool
 ]
+
