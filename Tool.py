@@ -1,15 +1,30 @@
 # ------------------ Tool Interface ------------------
+from typing import TYPE_CHECKING
+
 from PySide6.QtCore import QPointF, QRectF, QSizeF, Qt, Signal, QObject
 from PySide6.QtGui import QPen, QColor
 from PySide6.QtWidgets import QPushButton, QWidget, QVBoxLayout, QLabel
 
 from Drawable import Drawable, SelectDrawable
-from ModelDrawable import ModelDrawable
 
+if TYPE_CHECKING:  # Helps with type checking, but does nothing at runtime
+    from Tool import Tool  # Forward declaration to prevent circular import
 
-class Tool:
-    def __init__(self, name: str, drawable_class, parent=None):
-        raise NotImplementedError
+class Tool(QObject):
+    activated: Signal  # Type hint (doesn't interfere with PySide)
+    changed: Signal
+    finished: Signal
+
+    # Define signals as class attributes
+    activated = Signal(QObject)  # Must be a class attribute
+    changed = Signal(QObject, object, list)
+    finished = Signal(QObject, object)
+    def __init__(self,name:str):
+        super().__init__()
+        self.name = name
+        self.model:'ModelDrawable' = None
+        print(f"Tool({self.name})::dir{dir(self)}")
+        print(f"Tool({self.name}).mro {Tool.mro()}")
 
     def add_input(self, input_value,tool:'Tool'):
         raise NotImplementedError
@@ -26,21 +41,20 @@ class Tool:
     def create_settings_widget(self):
         raise NotImplementedError
 
+    def on_finished(self,drawable:Drawable):
+        print(f"Finished Tool: {self.name} Drawable {drawable}")
+        self.model.add_drawable(drawable)
 
 
-class MultipointTool(QObject):
-    # Emitted whenever an input is added.
-    activated = Signal(Tool)
-    changed = Signal(Tool,Drawable,list)
-    # Emitted when enough inputs have been accumulated to build a complete drawable.
-    finished = Signal(Tool,Drawable)
-    model:'ModelDrawable'
+
+class MultipointTool(Tool):
 
     def __init__(self, name: str, drawable_class, parent=None):
-        super().__init__(parent)
-        self.name = name
+        super().__init__(name)
         self.drawable_class = drawable_class
         self.inputs = []
+        print(f"MultipointTool({self.name})::dir{dir(self)}")
+        print(f"MultipointTool({self.name}).mro {Tool.mro()}")
 
     def add_input(self, event,tool:Tool):
         """Append an input and evaluate the accumulated inputs via the drawable's build() method."""
@@ -80,20 +94,20 @@ class MultipointTool(QObject):
         layout.addWidget(label)
         return widget
 
+    def on_finished(self,drawable:Drawable):
+        print(f"Finished Tool: {self.name} Drawable {drawable}")
+        self.model.add_drawable(drawable)
 
-class MultipointModifierTool(QObject):
-    # Emitted whenever an input is added.
-    activated = Signal(Tool)
-    changed = Signal(Tool,Drawable,list)
-    # Emitted when enough inputs have been accumulated to build a complete drawable.
-    finished = Signal(Tool,Drawable)
-    model:'ModelDrawable'
+
+class MultipointModifierTool(Tool):
 
     def __init__(self, name: str, drawable_class, parent=None):
-        super().__init__(parent)
+        super().__init__(name)
         self.name = name
         self.drawable_class = drawable_class
         self.inputs = []
+        print(f"MultipointModifierTool({self.name})::dir{dir(self)}")
+        print(f"MultipointModifierTool({self.name}).mro {MultipointModifierTool.mro()}")
 
     def add_input(self, event,tool:Tool):
         """Append an input and evaluate the accumulated inputs via the drawable's build() method."""
@@ -102,6 +116,7 @@ class MultipointModifierTool(QObject):
         if errors == []:
             # Build complete, emit finished event.
             # should emmit the inputs
+            drawable.is_finalized=True
             self.finished.emit(self, drawable)
             # Clear inputs for next construction.
             self.inputs = []
@@ -133,10 +148,10 @@ class MultipointModifierTool(QObject):
         layout.addWidget(label)
         return widget
 
-    def accept(self, model: ModelDrawable,drawable:Drawable):
-        if isinstance(drawable,SelectDrawable):
+    def on_finished(self,drawable:Drawable):
+        print(f"Finished Tool: {self.name} Drawable {drawable} is_finalized{drawable.is_finalized}")
+        if drawable.is_finalized:
             if drawable.rtl:
-                model.selection = model.find_drawables_crossing(drawable.rect)
+                self.model.selection = self.model.find_drawables_inside(drawable.get_rect())
             else:
-                model.selection = model.find_drawables_inside(drawable.rect)
-        pass
+                self.model.selection = self.model.find_drawables_crossing(drawable.get_rect())

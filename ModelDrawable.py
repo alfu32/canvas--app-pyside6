@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import List
 
-from PySide6.QtCore import QPointF
+from PySide6.QtCore import QPointF, QRectF
 
 from Drawable import Drawable, BoxDrawable, LinkDrawable
 
@@ -33,8 +33,14 @@ class ModelDrawable(Drawable):
                 return True
         return False
 
-    def find_drawables_inside(self, rect):
-        return []
+    def find_drawables_inside(self, rect: QRectF) -> List[Drawable]:
+        """
+        Finds all drawables that are **completely contained** within the given rectangle.
+        """
+        return [d for d in self.drawables if rect.contains(d.get_rect()) or len(d.get_hotspots()) == len([hs for hs in d.get_hotspots() if rect.contains(hs)])]
 
-    def find_drawables_crossing(self, rect):
-        return []
+    def find_drawables_crossing(self, rect: QRectF) -> List[Drawable]:
+        """
+        Finds all drawables that **partially overlap** (intersect) with the given rectangle.
+        """
+        return [d for d in self.drawables if rect.intersects(d.get_rect()) or rect.contains(d.get_rect()) or [hs for hs in d.get_hotspots() if rect.contains(hs)]]

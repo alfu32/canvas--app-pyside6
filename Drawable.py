@@ -18,14 +18,22 @@ class Drawable:
     id:str
     name:str
     metadata:dict
+    is_finalized:bool
 
     def __init__(self):
         self.id=uuid.uuid4().hex.__str__()
         self.name="DrawableName"
         self.metadata={}
+        self.is_finalized=False
+
+    def get_rect(self) -> QRectF:
+        return QRectF()
 
     def draw(self, painter: QPainter, model, canvas):
         raise NotImplementedError
+
+    def get_hotspots(self) -> list[QPointF]:
+        return []
 
     def contains(self, point: QPointF) -> bool:
         raise NotImplementedError
@@ -35,14 +43,12 @@ class Drawable:
         raise NotImplementedError
 
 class NullDrawable:
-    id:str
-    name:str
-    metadata:dict
 
     def __init__(self):
-        self.id=uuid.uuid4().hex.__str__()
-        self.name="DrawableName"
-        self.metadata={}
+        super().__init__()
+
+    def get_rect(self) -> QRectF:
+        return QRectF()
 
     def draw(self, painter: QPainter, model, canvas):
         pass
@@ -50,26 +56,26 @@ class NullDrawable:
     def contains(self, point: QPointF) -> bool:
         return False
 
+    def get_hotspots(self) -> list[QPointF]:
+        return []
+
     @staticmethod
     def build(inputs: list,model:ModelDrawable)  -> (list,'Drawable'):
         return ["null drawable"],NullDrawable()
 
 
 class SelectDrawable:
-    id:str
-    name:str
-    metadata:dict
-    rect:QRectF
     selection:list[Drawable] = []
     rtl:bool
 
     def __init__(self):
-        self.id=uuid.uuid4().hex.__str__()
-        self.name="DrawableName"
-        self.metadata={}
+        super().__init__()
         self.rect=QRectF()
         self.selection=[]
         self.rtl=True
+
+    def get_rect(self) -> QRectF:
+        return QRectF(self.rect.topLeft(), self.rect.bottomRight())
 
     def draw(self, painter: QPainter, model, canvas):
         pen = QPen(QColor(0x00,0x88,0x88,0xff))
@@ -81,6 +87,9 @@ class SelectDrawable:
         painter.drawRect(self.rect)
         # Optionally draw the box name.
         # painter.drawText(self.rect.topLeft() + QPointF(5,15), self.name)
+
+    def get_hotspots(self) -> list[QPointF]:
+        return []
 
     def contains(self, point: QPointF) -> bool:
         return False
@@ -110,16 +119,12 @@ class SelectDrawable:
             start=points[0].modelPoint
             end=start
             box.rect = QRectF(start,end).normalized()
-            box.selection=[]
         elif len(points) % 2 == 0:
-            errors.append("selection window ready")
             points=points[-2:]
             start=points[0].modelPoint
             end=points[1].modelPoint
             box.rect = QRectF(start,end).normalized()
             box.rtl=start.x() < end.x()
-            box.selection=model.find_drawables_inside(box.rect) if start.x() < end.x() else model.find_drawables_crossing(box.rect)
-            model.selection.extend(box.selection)
 
         model.feedbackDrawables=[box]
 
@@ -130,7 +135,6 @@ class BoxDrawable(Drawable):
 
     def __init__(self, rect: QRectF, metadata: dict):
         super().__init__()
-        self.name="BoxDrawable"
         self.rect = rect
         self.metadata = metadata
 
@@ -141,10 +145,18 @@ class BoxDrawable(Drawable):
         )
         return QRectF(self.rect.topLeft(), self.rect.bottomRight() + QPointF(0,supYCount*15.0))
 
+    def get_hotspots(self) -> list[QPointF]:
+        rect = self.get_rect()
+        return [
+            rect.topLeft(),
+            rect.topRight(),
+            rect.bottomRight(),
+            rect.bottomLeft(),
+        ]
 
     def add_link(self,link:'LinkDrawable'):
         self.links.append(link)
-        self.links.sort(lambda l: l.get_direction())
+        self.links.sort(key=lambda l: l.get_direction())
 
     def draw(self, painter, model, canvas):
         pen = QPen(QColor("black"))
@@ -254,6 +266,11 @@ class LinkDrawable(Drawable):
         painter.drawText(p1 + offset_start, self.name)
         painter.drawText(p2 + offset_end, self.name)
 
+    def get_hotspots(self) -> list[QPointF]:
+        return [
+            self.box1.rect.topRight() + QPointF(0, 25 + self.box1.get_outgoing_order(self) * 15),
+            self.box2.rect.topLeft() + QPointF(0, 25 + self.box2.get_incoming_order(self) * 15),
+        ]
     def contains(self, point: QPointF) -> bool:
         # For simplicity, we return False for link hit testing.
         return False

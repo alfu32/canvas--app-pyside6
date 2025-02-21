@@ -54,11 +54,7 @@ class MainWindow(QMainWindow):
         self.canvas.update()
 
     def on_tool_finished(self,tool:Tool,drawable:Drawable):
-        print(f"Finished Tool: {tool.name} Drawable {drawable}")
-        if isinstance(tool,MultipointTool):
-            self.canvas.model.add_drawable(drawable)
-        elif isinstance(tool,MultipointModifierTool):
-            tool.accept(self.canvas.model,drawable)
+        tool.on_finished(drawable)
         self.canvas.model.feedbackDrawables = []
         self.canvas.update()
 
@@ -85,6 +81,7 @@ class MainWindow(QMainWindow):
             btn=tool.create_activation_button()
             btn.setSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
             # Use a lambda with a default argument to capture the current tool.
+            print(f"tool : {tool.name}\n")
             tool.activated.connect(lambda tt: self.on_tool_activated(tt))
             tool.changed.connect(lambda tt,dd: self.on_tool_changed(tt,dd))
             tool.finished.connect(lambda tt,dd: self.on_tool_finished(tt,dd))

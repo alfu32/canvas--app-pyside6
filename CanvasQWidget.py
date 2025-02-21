@@ -1,12 +1,47 @@
 from typing import List
 
-from PySide6.QtCore import Signal, QRectF, QPointF, QTimer
-from PySide6.QtGui import QPainter, QMouseEvent, QWheelEvent, QColor, Qt, QTransform, QFontDatabase, QFont
+from PySide6.QtCore import Signal, QRectF, QPointF, QTimer, QRect, QPoint
+from PySide6.QtGui import QPainter, QMouseEvent, QWheelEvent, QColor, Qt, QTransform, QFontDatabase, QFont, QBrush
 from PySide6.QtWidgets import QWidget
 
 from Drawable import Drawable
 from ModelDrawable import ModelDrawable
 from events import CanvasPointerEvent, CanvasZoomEvent, CanvasKeyEvent
+
+
+def draw_hotspot(painter:QPainter, hs:QPointF):
+    """
+    Draws a hotspot marker at the given QPointF using a QPainter.
+
+    - Draws a small filled circle at the point.
+    - Optionally, draws a cross for better visibility.
+    """
+    if not painter:
+        return
+
+    radius = 5  # Size of the hotspot
+    fill = QColor(0, 0, 0)  # Red color for visibility
+    fill.setHsv(240,127,127,100)
+    line = QColor(0, 0, 0)  # Red color for visibility
+    line.setHsv(240,127,127,255)
+
+    # Save painter state
+    painter.save()
+
+    # Set brush and pen
+    painter.setBrush(QBrush(fill,Qt.SolidPattern))  # 1 = Qt.SolidPattern (for full transparency effect)
+    painter.setPen(line)  # Border color
+
+    # Optional: Draw a cross (for better visibility)
+    cross_size = 10.0
+    x=int(hs.x())
+    y=int(hs.y())
+    re = QRect(QPoint(x - radius,y - radius),QPoint(x + radius,y + radius),)
+    painter.drawRect(re)
+    painter.fillRect(re,fill)
+
+    # Restore painter state
+    painter.restore()
 
 
 class CanvasQWidget(QWidget):
@@ -91,6 +126,9 @@ class CanvasQWidget(QWidget):
             drawable.draw(painter, self.model, self)
         for drawable in self.model.feedbackDrawables:
             drawable.draw(painter, self.model, self)
+        for drawable in self.model.selection:
+            for hs in drawable.get_hotspots():
+                draw_hotspot(painter,hs)
         painter.end()
 
     def get_canvas_pointer_event(self,event: QMouseEvent)->CanvasPointerEvent:
