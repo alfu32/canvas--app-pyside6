@@ -42,7 +42,7 @@ class Tool(QObject):
         raise NotImplementedError
 
     def on_finished(self,drawable:Drawable):
-        print(f"Finished Tool: {self.name} Drawable {drawable}")
+        # print(f"Finished Tool: {self.name} Drawable {drawable}")
         self.model.add_drawable(drawable)
 
 
@@ -95,7 +95,7 @@ class MultipointTool(Tool):
         return widget
 
     def on_finished(self,drawable:Drawable):
-        print(f"Finished Tool: {self.name} Drawable {drawable}")
+        # print(f"Finished Tool: {self.name} Drawable {drawable}")
         self.model.add_drawable(drawable)
 
 
@@ -149,7 +149,7 @@ class MultipointModifierTool(Tool):
         return widget
 
     def on_finished(self,drawable:Drawable):
-        print(f"Finished Tool: {self.name} Drawable {drawable} is_finalized{drawable.is_finalized}")
+        # print(f"Finished Tool: {self.name} Drawable {drawable} is_finalized{drawable.is_finalized}")
         if drawable.is_finalized:
             if drawable.rtl:
                 self.model.selection = self.model.find_drawables_inside(drawable.get_rect())

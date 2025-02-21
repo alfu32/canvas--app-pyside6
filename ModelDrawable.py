@@ -37,10 +37,10 @@ class ModelDrawable(Drawable):
         """
         Finds all drawables that are **completely contained** within the given rectangle.
         """
-        return [d for d in self.drawables if rect.contains(d.get_rect()) or len(d.get_hotspots()) == len([hs for hs in d.get_hotspots() if rect.contains(hs)])]
+        return [d for d in self.drawables if rect.contains(d.get_rect()) or len(d.get_hotspots()) == len([hs for hs in d.get_hotspots() if rect.contains(hs.point)])]
 
     def find_drawables_crossing(self, rect: QRectF) -> List[Drawable]:
         """
         Finds all drawables that **partially overlap** (intersect) with the given rectangle.
         """
-        return [d for d in self.drawables if rect.intersects(d.get_rect()) or rect.contains(d.get_rect()) or [hs for hs in d.get_hotspots() if rect.contains(hs)]]
+        return [d for d in self.drawables if rect.intersects(d.get_rect()) or rect.contains(d.get_rect()) or [hs for hs in d.get_hotspots() if rect.contains(hs.point)]]
