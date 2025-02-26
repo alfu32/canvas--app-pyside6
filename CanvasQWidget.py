@@ -95,10 +95,30 @@ class CanvasQWidget(QWidget):
                 hs.draw(painter,self.model,self)
         painter.end()
 
+    def get_target_boxes(self,modelPoint:QPointF,parent:Drawable=None) -> list[Drawable]:
+        dwb=[]
+        if parent is None:
+            for d in self.model.drawables:
+                if d.contains(modelPoint):
+                    dwb.append(d)
+                    rest = self.get_target_boxes(modelPoint,d)
+                    for r in rest:
+                        dwb.append(r)
+        else:
+            for d in parent.children:
+                if d.contains(modelPoint):
+                    dwb=[d]
+                    rest = self.get_target_boxes(modelPoint,d)
+                    for r in rest:
+                        dwb.append(r)
+        dwb.reverse()
+        return dwb
+
+
     def get_canvas_pointer_event(self,event: QMouseEvent)->CanvasPointerEvent:
         screenPoint=event.position()
         modelPoint = self.screen_to_model(screenPoint)
-        under = [d for d in self.model.drawables if d.contains(modelPoint)]
+        under = self.get_target_boxes(modelPoint)
         self.last_pointer_event =  CanvasPointerEvent(
             screenPoint=screenPoint,
             modelPoint=modelPoint,
@@ -152,7 +172,7 @@ class CanvasQWidget(QWidget):
         self.update()
         screenPoint=event.point(0).position()
         modelPoint = self.get_transform().map(screenPoint)
-        under = [d for d in self.model.drawables if d.contains(modelPoint)]
+        under = self.get_target_boxes(modelPoint)
 
 
         self.zoomFinished.emit(CanvasZoomEvent(
