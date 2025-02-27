@@ -3,6 +3,7 @@ from typing import List
 from PySide6.QtCore import Signal, QRectF, QPointF, QTimer, QRect, QPoint
 from PySide6.QtGui import QPainter, QMouseEvent, QWheelEvent, QColor, Qt, QTransform, QFontDatabase, QFont, QBrush
 from PySide6.QtWidgets import QWidget
+from shiboken6.Shiboken import delete
 
 from Drawable import Drawable
 from ModelDrawable import ModelDrawable
@@ -17,6 +18,8 @@ class CanvasQWidget(QWidget):
     bufferFinished = Signal(CanvasKeyEvent)  # (scale, centerPoint)
     # feedbackDrawables:List[Drawable] = []
     last_pointer_event:CanvasPointerEvent=None
+
+    hotspot_event_start:CanvasPointerEvent=None
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -132,27 +135,49 @@ class CanvasQWidget(QWidget):
 
     def mousePressEvent(self, event: QMouseEvent):
         cpe=self.get_canvas_pointer_event(event)
-        for drawable in self.model.selection:
-            for hs in drawable.get_hotspots():
-                if hs.contains(cpe.modelPoint):
-                    hs.onclick(cpe)
-                    return
-        self.pointerDown.emit(cpe)
-        super().mousePressEvent(event)
+        cpe.type='pointerdown'
+        if self.hotspot_event_start is None:
+            self.pointerDown.emit(cpe)
+            super().mousePressEvent(event)
+        else:
+            pass
 
     def mouseReleaseEvent(self, event: QMouseEvent):
         cpe=self.get_canvas_pointer_event(event)
+        cpe.type='pointerup'
         for drawable in self.model.selection:
             for hs in drawable.get_hotspots():
                 if hs.contains(cpe.modelPoint):
-                    hs.onclick(cpe)
-                    return
-        self.pointerUp.emit(cpe)
-        super().mouseReleaseEvent(event)
+                    # hs.onclick(cpe)
+                    if self.hotspot_event_start is None:
+                        print(f"hotspot click started")
+                        self.hotspot_event_start=cpe
+                        for sel in self.model.selection:
+                            sel.anchor = sel.rect.topLeft()
+                        return
+        if self.hotspot_event_start is None:
+            self.pointerUp.emit(cpe)
+            super().mouseReleaseEvent(event)
+        else:
+            print(f"hotspot click ended")
+            self.hotspot_event_start = None
+            for sel in self.model.selection:
+                sel.anchor=None
 
     def mouseMoveEvent(self, event: QMouseEvent):
-        self.pointerMove.emit(self.get_canvas_pointer_event(event))
-        super().mouseMoveEvent(event)
+        cpe=self.get_canvas_pointer_event(event)
+        cpe.type='pointermove'
+        if self.hotspot_event_start is None:
+            self.pointerMove.emit(cpe)
+            super().mouseMoveEvent(event)
+        else:
+            delta = cpe.modelPoint - self.hotspot_event_start.modelPoint
+            # print(f"hotspot action move {delta}")
+            for sel in self.model.selection:
+                new_topleft = sel.anchor + delta
+                print(f"hotspot action move from {sel.rect.topLeft()} to {new_topleft}")
+                sel.rect.moveTo(new_topleft)
+            self.update()
 
     def wheelEvent(self, event: QWheelEvent):
         # Get the mouse pointer position (screen coordinates).

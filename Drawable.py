@@ -1,4 +1,6 @@
 from __future__ import annotations
+
+import json
 import uuid
 from functools import reduce
 from math import atan2
@@ -6,7 +8,7 @@ from math import atan2
 from PySide6.QtCore import QPointF, QRectF, Qt, QRect, QObject, QPoint, QMarginsF
 from PySide6.QtGui import QPainter, QPen, QColor, QBrush
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from ModelDrawable import ModelDrawable
@@ -23,6 +25,7 @@ class Drawable:
     is_finalized: bool
     children: list['Drawable']
     links: list['LinkDrawable'] = []
+    rect:QRectF
 
     def __init__(self):
         self.id = uuid.uuid4().hex.__str__()
@@ -30,6 +33,7 @@ class Drawable:
         self.metadata = {}
         self.is_finalized = False
         self.children=[]
+        self.rect = QRectF()
 
     def get_rect(self) -> QRectF:
         calcY = max(
@@ -62,6 +66,34 @@ class Drawable:
             if child.contains(point):
                 return True
         return False
+
+
+    def find_drawables_inside(self, rect: QRectF) -> List[Drawable]:
+        """
+        Finds all drawables that are **completely contained** within the given rectangle.
+        """
+        result = []
+        if rect.contains(self.get_rect()) or len(self.get_hotspots()) == len(
+                [hs for hs in self.get_hotspots() if rect.contains(hs.point)]):
+            result.append(self)
+        for child in self.children:
+            rest = child.find_drawables_inside(rect)
+            for ch in rest:
+                result.append(ch)
+        return result
+
+    def find_drawables_crossing(self, rect: QRectF) -> List[Drawable]:
+        """
+        Finds all drawables that **partially overlap** (intersect) with the given rectangle.
+        """
+        result = []
+        if rect.intersects(self.get_rect()) or rect.contains(self.get_rect()) or [hs for hs in self.get_hotspots() if rect.contains(hs.point)]:
+            result.append(self)
+        for child in self.children:
+            rest = child.find_drawables_crossing(rect)
+            for ch in rest:
+                result.append(ch)
+        return result
 
     @staticmethod
     def build(inputs: list, model: ModelDrawable) -> (list, 'Drawable'):
@@ -149,7 +181,6 @@ class SelectDrawable:
 
     def __init__(self):
         super().__init__()
-        self.rect = QRectF()
         self.selection = []
         self.rtl = True
 
@@ -168,7 +199,21 @@ class SelectDrawable:
         # painter.drawText(self.rect.topLeft() + QPointF(5,15), self.name)
 
     def get_hotspots(self) -> list[HotSpot]:
-        return []
+        all = []
+        for selected in self.selection:
+            hotspots = selected.get_hotspots()
+            for hotspot in hotspots:
+                all.append(hotspot)
+        return all
+
+    def hotspot_click(self,x:CanvasPointerEvent):
+        if self.move_reference is None and x.type == 'pointerdown':
+            print(f"started moving {x}")
+            self.move_reference = x.modelPoint
+            #self.rect.moveTo(x.modelPoint)
+        elif self.move_reference is not None and x.type == 'pointerup':
+            print(f"finished moving {x}")
+            self.move_reference = None
 
     def contains(self, point: QPointF) -> bool:
         return False
@@ -211,6 +256,7 @@ class SelectDrawable:
 
 
 class BoxDrawable(Drawable):
+    move_reference:QPointF = None
 
     def __init__(self, rect: QRectF, metadata: dict):
         super().__init__()
@@ -234,10 +280,10 @@ class BoxDrawable(Drawable):
     def get_hotspots(self) -> list[HotSpot]:
         rect = self.get_rect()
         return [
-            HotSpot(rect.topLeft(),self,lambda x: print(f"hotspot of {self.name} clicked") ),
-            HotSpot(rect.topRight(),self,lambda x: print(f"hotspot of {self.name} clicked") ),
-            HotSpot(rect.bottomRight(),self,lambda x: print(f"hotspot of {self.name} clicked") ),
-            HotSpot(rect.bottomLeft(),self,lambda x: print(f"hotspot of {self.name} clicked") ),
+            HotSpot(rect.topLeft(),self,None ),
+            HotSpot(rect.topRight(),self, None ),
+            HotSpot(rect.bottomRight(),self, None ),
+            HotSpot(rect.bottomLeft(),self, None ),
         ]
 
     def add_link(self, link: 'LinkDrawable'):
@@ -320,6 +366,8 @@ class BoxDrawable(Drawable):
 
 
 class LinkDrawable(Drawable):
+    move_reference:QPointF
+
     def __init__(self, box1: BoxDrawable, box2: BoxDrawable, metadata: dict):
         super().__init__()
         self.name = "link"
@@ -355,8 +403,8 @@ class LinkDrawable(Drawable):
 
     def get_hotspots(self) -> list[HotSpot]:
         return [
-            HotSpot(self.box1.get_rect().topRight() + QPointF(0, 25 + self.box1.get_outgoing_order(self) * 15),self,lambda x: print(f"lifted start of {self.name}")),
-            HotSpot(self.box2.get_rect().topLeft() + QPointF(0, 25 + self.box2.get_incoming_order(self) * 15),self,lambda x: print(f"lifted end of {self.name}")),
+            HotSpot(self.box1.get_rect().topRight() + QPointF(0, 25 + self.box1.get_outgoing_order(self) * 15),self,None),
+            HotSpot(self.box2.get_rect().topLeft() + QPointF(0, 25 + self.box2.get_incoming_order(self) * 15),self,None),
         ]
 
     def contains(self, point: QPointF) -> bool:

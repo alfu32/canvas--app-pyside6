@@ -1,11 +1,11 @@
 # ------------------ Tool Interface ------------------
-from typing import TYPE_CHECKING
 
-from PySide6.QtCore import QPointF, QRectF, QSizeF, Qt, Signal, QObject
-from PySide6.QtGui import QPen, QColor
+from typing import TYPE_CHECKING, Callable
+
+from PySide6.QtCore import Qt, Signal, QObject
 from PySide6.QtWidgets import QPushButton, QWidget, QVBoxLayout, QLabel
 
-from Drawable import Drawable, SelectDrawable, BoxDrawable
+from Drawable import Drawable, BoxDrawable
 from events import CanvasPointerEvent, CanvasKeyEvent, CanvasEvent
 
 if TYPE_CHECKING:  # Helps with type checking, but does nothing at runtime
@@ -50,6 +50,43 @@ class Tool(QObject):
         # Clear inputs for next construction.
         self.inputs = []
 
+class OneClickTool(Tool):
+    clicked:Callable[['ModelDrawable'],None]
+
+    def __init__(self,name:str,clicked:Callable[['ModelDrawable'],None]):
+        super().__init__(name)
+        self.clicked = clicked
+        print(f"Tool({self.name})::dir{dir(self)}")
+        print(f"Tool({self.name}).mro {Tool.mro()}")
+
+    def add_input(self, input_value,tool:'Tool'):
+        pass
+
+    def set_last_input(self, input_value,tool:'Tool'):
+        pass
+
+    def reset(self):
+        pass
+
+    def on_finished(self,drawable:Drawable):
+        # Clear inputs for next construction.
+        self.inputs = []
+
+    def create_activation_button(self):
+        """Factory method to create a button with the tool's name."""
+        btn = QPushButton(f"{self.name}")
+        # Prevent button from stealing focus.
+        btn.setFocusPolicy(Qt.NoFocus)
+        btn.clicked.connect(lambda x: self.clicked(self.model))
+        return btn
+
+    def create_settings_widget(self):
+        """Factory method to create a simple settings widget."""
+        widget = QWidget()
+        layout = QVBoxLayout(widget)
+        label = QLabel(f"{self.name} Settings:")
+        layout.addWidget(label)
+        return widget
 
 
 class MultipointTool(Tool):
@@ -68,7 +105,7 @@ class MultipointTool(Tool):
         if errors == []:
             # Build complete, emit finished event.
             # should emmit the inputs
-            self.last_pointer_event=[inp for inp in self.inputs if inp.type=='pointer'][-1]
+            self.last_pointer_event=[inp for inp in self.inputs if inp.type.startswith('pointer')][-1]
             self.last_key_event=[inp for inp in self.inputs if inp.type=='key'][-1]
             self.finished.emit(self, drawable)
         else:

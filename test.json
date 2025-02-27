@@ -1,0 +1,1397 @@
+{
+  "struct": [
+    {
+      "class": "BoxDrawable",
+      "id": "a1045d24545740dc8abcdfb0cf0a3845",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 43.1953125,
+          "y": 233.74609375
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 193.1953125,
+          "y": 283.74609375
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "2761f889bf62410f95856a5e85512f6b",
+      "name": "asd",
+      "children": [
+        {
+          "id": "5790058e3be142968908668aca706c9d",
+          "name": "asd"
+        },
+        {
+          "id": "a2a339cc31684bc3973dee30db6e0d5d",
+          "name": "asd"
+        },
+        {
+          "id": "c58246e197884f22ad41ce433010050c",
+          "name": "asd"
+        }
+      ],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 332.98046875,
+          "y": 66.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 482.98046875,
+          "y": 116.0
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "b113b0e595f14bc4a0e44ca18a9b58ec",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 467.3965816028886,
+          "y": 317.5721271477804
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 617.3965816028885,
+          "y": 367.5721271477804
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "89cac5cca0a74b4685446ec38c0389de",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 886.2398353616262,
+          "y": 314.5333158501008
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1036.2398353616263,
+          "y": 364.5333158501008
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "e6f692328dc14dd6a0dff9de6a8820f5",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1298.0486111111109,
+          "y": 198.16666666666666
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1448.0486111111109,
+          "y": 248.16666666666666
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "4205802c344945d8a2460453f6ea5289",
+      "name": "q",
+      "src": {
+        "id": "a1045d24545740dc8abcdfb0cf0a3845",
+        "name": "asd"
+      },
+      "target": {
+        "id": "5790058e3be142968908668aca706c9d",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "a937a2c6977641189be388ba09b7c3e0",
+      "name": "w",
+      "src": {
+        "id": "5790058e3be142968908668aca706c9d",
+        "name": "asd"
+      },
+      "target": {
+        "id": "a2a339cc31684bc3973dee30db6e0d5d",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "1bc8273119f640b191796564c2eb9f9e",
+      "name": "e",
+      "src": {
+        "id": "a2a339cc31684bc3973dee30db6e0d5d",
+        "name": "asd"
+      },
+      "target": {
+        "id": "c58246e197884f22ad41ce433010050c",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "f7711046aad145438eefe3b3ed89c0e4",
+      "name": "r",
+      "src": {
+        "id": "c58246e197884f22ad41ce433010050c",
+        "name": "asd"
+      },
+      "target": {
+        "id": "e6f692328dc14dd6a0dff9de6a8820f5",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "7e7ae95db16041f08e70df80859878ae",
+      "name": "t",
+      "src": {
+        "id": "a1045d24545740dc8abcdfb0cf0a3845",
+        "name": "asd"
+      },
+      "target": {
+        "id": "b113b0e595f14bc4a0e44ca18a9b58ec",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "7b0e600821b2499e83bafd638c35c94f",
+      "name": "y",
+      "src": {
+        "id": "b113b0e595f14bc4a0e44ca18a9b58ec",
+        "name": "asd"
+      },
+      "target": {
+        "id": "89cac5cca0a74b4685446ec38c0389de",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "d99f509e7ac34b1f92955214e46e4e1a",
+      "name": "u",
+      "src": {
+        "id": "89cac5cca0a74b4685446ec38c0389de",
+        "name": "asd"
+      },
+      "target": {
+        "id": "e6f692328dc14dd6a0dff9de6a8820f5",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    }
+  ],
+  "index": [
+    {
+      "class": "BoxDrawable",
+      "id": "a1045d24545740dc8abcdfb0cf0a3845",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 43.1953125,
+          "y": 233.74609375
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 193.1953125,
+          "y": 283.74609375
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "2761f889bf62410f95856a5e85512f6b",
+      "name": "asd",
+      "children": [
+        {
+          "id": "5790058e3be142968908668aca706c9d",
+          "name": "asd"
+        },
+        {
+          "id": "a2a339cc31684bc3973dee30db6e0d5d",
+          "name": "asd"
+        },
+        {
+          "id": "c58246e197884f22ad41ce433010050c",
+          "name": "asd"
+        }
+      ],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 332.98046875,
+          "y": 66.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 482.98046875,
+          "y": 116.0
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "5790058e3be142968908668aca706c9d",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 421.90625,
+          "y": 94.9140625
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 571.90625,
+          "y": 144.9140625
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "a2a339cc31684bc3973dee30db6e0d5d",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 659.17578125,
+          "y": 89.9296875
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 809.17578125,
+          "y": 139.9296875
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "c58246e197884f22ad41ce433010050c",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 894.4305555555555,
+          "y": 88.45138888888889
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1044.4305555555557,
+          "y": 138.45138888888889
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "b113b0e595f14bc4a0e44ca18a9b58ec",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 467.3965816028886,
+          "y": 317.5721271477804
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 617.3965816028885,
+          "y": 367.5721271477804
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "89cac5cca0a74b4685446ec38c0389de",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 886.2398353616262,
+          "y": 314.5333158501008
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1036.2398353616263,
+          "y": 364.5333158501008
+        }
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "e6f692328dc14dd6a0dff9de6a8820f5",
+      "name": "asd",
+      "children": [],
+      "links": [
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "1bc8273119f640b191796564c2eb9f9e",
+          "name": "e"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "a937a2c6977641189be388ba09b7c3e0",
+          "name": "w"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "4205802c344945d8a2460453f6ea5289",
+          "name": "q"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "d99f509e7ac34b1f92955214e46e4e1a",
+          "name": "u"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "7b0e600821b2499e83bafd638c35c94f",
+          "name": "y"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "f7711046aad145438eefe3b3ed89c0e4",
+          "name": "r"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        },
+        {
+          "id": "7e7ae95db16041f08e70df80859878ae",
+          "name": "t"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1298.0486111111109,
+          "y": 198.16666666666666
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1448.0486111111109,
+          "y": 248.16666666666666
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "4205802c344945d8a2460453f6ea5289",
+      "name": "q",
+      "src": {
+        "id": "a1045d24545740dc8abcdfb0cf0a3845",
+        "name": "asd"
+      },
+      "target": {
+        "id": "5790058e3be142968908668aca706c9d",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "a937a2c6977641189be388ba09b7c3e0",
+      "name": "w",
+      "src": {
+        "id": "5790058e3be142968908668aca706c9d",
+        "name": "asd"
+      },
+      "target": {
+        "id": "a2a339cc31684bc3973dee30db6e0d5d",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "1bc8273119f640b191796564c2eb9f9e",
+      "name": "e",
+      "src": {
+        "id": "a2a339cc31684bc3973dee30db6e0d5d",
+        "name": "asd"
+      },
+      "target": {
+        "id": "c58246e197884f22ad41ce433010050c",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "f7711046aad145438eefe3b3ed89c0e4",
+      "name": "r",
+      "src": {
+        "id": "c58246e197884f22ad41ce433010050c",
+        "name": "asd"
+      },
+      "target": {
+        "id": "e6f692328dc14dd6a0dff9de6a8820f5",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "7e7ae95db16041f08e70df80859878ae",
+      "name": "t",
+      "src": {
+        "id": "a1045d24545740dc8abcdfb0cf0a3845",
+        "name": "asd"
+      },
+      "target": {
+        "id": "b113b0e595f14bc4a0e44ca18a9b58ec",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "7b0e600821b2499e83bafd638c35c94f",
+      "name": "y",
+      "src": {
+        "id": "b113b0e595f14bc4a0e44ca18a9b58ec",
+        "name": "asd"
+      },
+      "target": {
+        "id": "89cac5cca0a74b4685446ec38c0389de",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "d99f509e7ac34b1f92955214e46e4e1a",
+      "name": "u",
+      "src": {
+        "id": "89cac5cca0a74b4685446ec38c0389de",
+        "name": "asd"
+      },
+      "target": {
+        "id": "e6f692328dc14dd6a0dff9de6a8820f5",
+        "name": "asd"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        }
+      }
+    }
+  ]
+}
