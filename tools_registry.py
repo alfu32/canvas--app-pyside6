@@ -3,6 +3,7 @@ from tools import drawable_box_tool
 from tools import link_box_tool
 from tools import save_model_json
 from tools import load_model_json
+from tools import compile_model_json
 
 tools_registry = [
     select_tool,
@@ -10,5 +11,6 @@ tools_registry = [
     link_box_tool,
     save_model_json,
     load_model_json,
+    compile_model_json,
 ]
 

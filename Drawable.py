@@ -287,8 +287,9 @@ class BoxDrawable(Drawable):
         ]
 
     def add_link(self, link: 'LinkDrawable'):
-        self.links.append(link)
-        self.links.sort(key=lambda l: l.get_direction())
+        if link.id not in [l.id for l in self.links]:
+            self.links.append(link)
+            self.links.sort(key=lambda l: l.get_direction())
 
     def draw(self, painter, model, canvas):
         pen = QPen(QColor("black"))
@@ -298,6 +299,19 @@ class BoxDrawable(Drawable):
         painter.drawRect(r)
         # Optionally draw the box name.
         painter.drawText(r.topLeft() + QPointF(5, 15), self.name)
+        # left=1
+        # right=1
+        # for lnk in self.links:
+        #     tl = r.topLeft()
+        #     tr = r.topRight()
+        #     if lnk.box1 == self:
+        #         painter.drawText(tl + QPointF(5, 15*left), lnk.name)
+        #         left+=1
+        #     elif lnk.box2 == self:
+        #         painter.drawText(tr + QPointF(5, 15*right), lnk.name)
+        #         right+=1
+        #     else:
+        #         painter.drawText( tr + QPointF(50, 15 * right), lnk.name)
         super().draw(painter, model, canvas)
         pass
 

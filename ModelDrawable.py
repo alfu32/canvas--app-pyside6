@@ -109,11 +109,11 @@ class ModelDrawable(Drawable):
         with os.fdopen(fd, 'w+') as file:
             json_str = file.read()  # Reads the entire file content into a string
             data: Dict[str, Any] = json.loads(json_str)
-            struct={}
             index={}
             for item in data["index"]:
                 index[item["id"]]=item
                 if item["class"] == "BoxDrawable":
+                    print(item["rect"])
                     index[item["id"]] = BoxDrawable(
                         QRectF(
                             QPointF(
@@ -129,21 +129,28 @@ class ModelDrawable(Drawable):
                     index[item["id"]].name=item["name"]
             for item in data["index"]:
                 if item["class"] == "LinkDrawable":
-                    index[item["id"]] = LinkDrawable(
-                        index[item["src"]["id"]],
-                        index[item["target"]["id"]],
+                    box1:BoxDrawable = index[item["src"]["id"]]
+                    box2:BoxDrawable = index[item["target"]["id"]]
+                    link = LinkDrawable(
+                        box1,
+                        box2,
                         {}
                     )
-                    index[item["id"]].name=item["name"]
+                    link.name = item["name"]
+                    box1.add_link(link)
+                    box2.add_link(link)
+                    index[item["id"]] = link
             for item in data["index"]:
                 if item["class"] == "BoxDrawable":
                     it=index[item["id"]]
-                    for linkref in item["links"]:
-                        it.links.append(index[linkref["id"]])
                     for childref in item["children"]:
                         it.add_child(index[childref["id"]])
-
             print(index)
+            drawables = []
+            for item in data["struct"]:
+                drawables.append(index[item["id"]])
+            print(drawables)
+            self.drawables = drawables
 
 class DrawableEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -187,6 +194,10 @@ class DrawableEncoder(json.JSONEncoder):
                 "class":"QRectF",
                 "topLeft":obj.topLeft(),
                 "bottomRight":obj.bottomRight(),
+                "x":obj.topLeft().x(),
+                "y":obj.topLeft().y(),
+                "w":obj.bottomRight().x() - obj.topLeft().x(),
+                "h":obj.bottomRight().y() - obj.topLeft().y(),
             }
         elif isinstance(obj, QPointF):
             # Convert the object to a dict (customize as needed)
