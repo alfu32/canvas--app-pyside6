@@ -35,6 +35,30 @@ class Drawable:
         self.children=[]
         self.rect = QRectF()
 
+    def toRef(self) -> dict[str,str]:
+        return {"id":self.id,"name":self.name}
+
+    def toMap(self) -> dict[str,any]:
+        links=[link.toRef() for link in self.links]
+        children=[child.toRef() for child in self.children]
+        rect = self.get_rect()
+        map = {
+            "id":self.id,
+            "name":self.name,
+            "metadata":self.metadata,
+            "children":children,
+            "links":links,
+            "rect":{
+                "class":"QRectF",
+                "topLeft":rect.topLeft(),
+                "bottomRight":rect.bottomRight(),
+                "x":rect.topLeft().x(),
+                "y":rect.topLeft().y(),
+                "w":rect.bottomRight().x() - rect.topLeft().x(),
+                "h":rect.bottomRight().y() - rect.topLeft().y(),
+            }
+        }
+
     def get_rect(self) -> QRectF:
         calcY = max(
             len([l for l in self.links if l.box1 == self]) * 15.0,
@@ -104,6 +128,8 @@ class Drawable:
 
     def remove_child(self,child:'Drawable'):
         self.children.remove(child)
+
+
 
 class HotSpot(Drawable):
 
@@ -378,6 +404,26 @@ class BoxDrawable(Drawable):
             # print("Element not found in the list.")
             return 0
 
+    def toMap(self):
+        rect = self.get_rect()
+        # Convert the object to a dict (customize as needed)
+        return {
+            "class": "BoxDrawable",
+            "id": self.id,
+            "name": self.name,
+            "children": [child.toRef() for child in self.children],
+            "links": [link.toRef() for link in self.links],
+            "rect":{
+                "class":"QRectF",
+                "topLeft":rect.topLeft(),
+                "bottomRight":rect.bottomRight(),
+                "x":rect.topLeft().x(),
+                "y":rect.topLeft().y(),
+                "w":rect.bottomRight().x() - rect.topLeft().x(),
+                "h":rect.bottomRight().y() - rect.topLeft().y(),
+            }
+        }
+
 
 class LinkDrawable(Drawable):
     move_reference:QPointF
@@ -397,8 +443,8 @@ class LinkDrawable(Drawable):
         return atan2(delta.y(), delta.x())
 
     def draw(self, painter: QPainter, model, canvas):
-        pen = QPen(QColor("blue"))
-        pen.setWidth(2)
+        pen = QPen(QColor("black"))
+        pen.setWidth(1)
         painter.setPen(pen)
         p1 = self.box1.get_rect().topRight() + QPointF(0, 25 + self.box1.get_outgoing_order(self) * 15)
         p2 = self.box2.get_rect().topLeft() + QPointF(0, 25 + self.box2.get_incoming_order(self) * 15)
@@ -406,10 +452,14 @@ class LinkDrawable(Drawable):
         painter.drawLine(p1, p1 + QPointF(50, 0))
         painter.drawLine(p1 + QPointF(50, 0), p2 - QPointF(50, 0))
         painter.drawLine(p2 - QPointF(50, 0), p2)
+        pen.setWidth(8)
+        painter.setPen(pen)
+        painter.drawLine(p1, p1 + QPointF(15, 0))
+        painter.drawLine(p2 - QPointF(15, 0), p2)
 
         # Define offsets for the text labels so they don't overlap the line.
-        offset_start = QPointF(5, -2)  # Adjust as needed for the start label.
-        offset_end = QPointF(-55, -2)  # Adjust as needed for the end label.
+        offset_start = QPointF(25, -2)  # Adjust as needed for the start label.
+        offset_end = QPointF(-50, -2)  # Adjust as needed for the end label.
 
         # Draw text at the start and end of the segment.
         painter.drawText(p1 + offset_start, self.name)
@@ -464,3 +514,23 @@ class LinkDrawable(Drawable):
 
     def __str__(self):
         return f"""Link:{{source:{self.box1},target:{self.box2},name:{self.name},id:{self.id} }}"""
+
+    def toMap(self) -> dict[str,any]:
+        rect=self.rect
+        # Convert the object to a dict (customize as needed)
+        return {
+            "class": "LinkDrawable",
+            "id": self.id,
+            "name": self.name,
+            "src": self.box1.toRef(),
+            "target": self.box2.toRef(),
+            "rect":{
+                "class":"QRectF",
+                "topLeft":rect.topLeft(),
+                "bottomRight":rect.bottomRight(),
+                "x":rect.topLeft().x(),
+                "y":rect.topLeft().y(),
+                "w":rect.bottomRight().x() - rect.topLeft().x(),
+                "h":rect.bottomRight().y() - rect.topLeft().y(),
+            }
+        }
