@@ -50,7 +50,8 @@ def compile_model(m:'ModelDrawable'):
     print(f"compiling model")
     # for d in m.get_all_linear():
     #     print(d)
-    m.restore_from_json()
+    for k,v in m.get_tree().items():
+        print(k)
 
 select_tool=MultipointModifierTool("Select", SelectDrawable)
 drawable_box_tool=BoxDrawableTool()

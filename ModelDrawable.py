@@ -75,11 +75,15 @@ class ModelDrawable(Drawable):
                 all.append(child)
         return all
 
-    def save_to_json(self):
-        pass
-
-    def from_json(self,json_str:str):
-        pass
+    def get_tree(self,parent:str = None):
+        tree = {}
+        for d in self.drawables:
+            tree[d.id]=d
+            for child in d.children:
+                subtree = child.get_tree(d.id)
+                for k,v in subtree.items():
+                    tree[k]=v
+        return tree
 
 
     def restore_from_json(self,json_str: str) -> str:

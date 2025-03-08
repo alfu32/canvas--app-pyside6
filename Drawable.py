@@ -34,6 +34,8 @@ class Drawable:
         self.is_finalized = False
         self.children=[]
         self.rect = QRectF()
+        self.links = []
+        self.children = []
 
     def toRef(self) -> dict[str,str]:
         return {"id":self.id,"name":self.name}
@@ -128,6 +130,19 @@ class Drawable:
 
     def remove_child(self,child:'Drawable'):
         self.children.remove(child)
+
+    def get_tree(self,parentPath:str) -> dict[str,any]:
+
+        path = f"{parentPath}/{self.id}"
+        tree = {
+            path:self
+        }
+        for child in self.children:
+            subtree = child.get_tree(path)
+            for k,v in subtree.items():
+                tree[k]=v
+        return tree
+
 
 
 
