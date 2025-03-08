@@ -132,7 +132,6 @@ class Drawable:
         self.children.remove(child)
 
     def get_tree(self,parentPath:str) -> dict[str,any]:
-
         path = f"{parentPath}/{self.id}"
         tree = {
             path:self
