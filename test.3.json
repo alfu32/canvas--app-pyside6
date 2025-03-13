@@ -1,0 +1,1872 @@
+{
+  "struct": [
+    {
+      "class": "BoxDrawable",
+      "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+      "name": "left",
+      "children": [],
+      "links": [
+        {
+          "id": "b98a393fb4c64c1692bff907817ca386",
+          "name": "q"
+        },
+        {
+          "id": "039f89e8c25c420398fe50a63a02955f",
+          "name": "t"
+        },
+        {
+          "id": "84f98d87da8d4c2cbea9f23cb10fe1b1",
+          "name": "aa"
+        },
+        {
+          "id": "eb394cdd63b64cecacd2427709fae819",
+          "name": "a"
+        },
+        {
+          "id": "e73087dcee8f4768a2f86fadd0c3cf8d",
+          "name": "z"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": -96.60728419617888,
+          "y": 395.833584292894
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 53.39271580382112,
+          "y": 445.833584292894
+        },
+        "x": -96.60728419617888,
+        "y": 395.833584292894,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "4522df9d70604fc69e91acd881c9e61e",
+      "name": "top",
+      "children": [
+        {
+          "id": "b10fce93e11b42c1a91ebd3ec2d0a8e0",
+          "name": "right"
+        },
+        {
+          "id": "aaaf99346754496a837252461e4b5c50",
+          "name": "bottom-1"
+        },
+        {
+          "id": "5be2eb390ec4458e9b33082a442db6e0",
+          "name": "bottom-2"
+        }
+      ],
+      "links": [],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 371.90625,
+          "y": 39.48828125
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1352.1063368055557,
+          "y": 259.9140625
+        },
+        "x": 371.90625,
+        "y": 39.48828125,
+        "w": 980.2000868055557,
+        "h": 220.42578125
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "0eb6b55fbde748f28b4e60c35b411193",
+      "name": "inner-1",
+      "children": [],
+      "links": [
+        {
+          "id": "039f89e8c25c420398fe50a63a02955f",
+          "name": "t"
+        },
+        {
+          "id": "f74b30b5f8bb4e80b62b81163aff0f74",
+          "name": "y"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 412.2090816028886,
+          "y": 325.1229083977804
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 562.2090816028885,
+          "y": 375.1229083977804
+        },
+        "x": 412.2090816028886,
+        "y": 325.1229083977804,
+        "w": 149.99999999999994,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "370d182bde3a4c1a91d2e577a7253270",
+      "name": "inner-2",
+      "children": [],
+      "links": [
+        {
+          "id": "f74b30b5f8bb4e80b62b81163aff0f74",
+          "name": "y"
+        },
+        {
+          "id": "f36ba9b1ba3645ae902503008ba7f54d",
+          "name": "u"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1093.9156166116263,
+          "y": 320.0606596001008
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1243.9156166116263,
+          "y": 370.0606596001008
+        },
+        "x": 1093.9156166116263,
+        "y": 320.0606596001008,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "f9a6663f25344329940cb6b8ef49f197",
+      "name": "inner-3",
+      "children": [],
+      "links": [
+        {
+          "id": "1c3f37ee7c5543fcac9af1e7896e3bc1",
+          "name": "v"
+        },
+        {
+          "id": "324ddf4aef5a46259294e9f275476dda",
+          "name": "f"
+        },
+        {
+          "id": "f36ba9b1ba3645ae902503008ba7f54d",
+          "name": "u"
+        },
+        {
+          "id": "a8a322baa7964893a1c16c0632e33e37",
+          "name": "r"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1756.4351221600714,
+          "y": 352.7838152624347
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1906.4351221600714,
+          "y": 402.7838152624347
+        },
+        "x": 1756.4351221600714,
+        "y": 352.7838152624347,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "b98a393fb4c64c1692bff907817ca386",
+      "name": "q",
+      "src": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "target": {
+        "id": "b10fce93e11b42c1a91ebd3ec2d0a8e0",
+        "name": "right"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "f9b77222c260426ca1dad50d0cfbc631",
+      "name": "w",
+      "src": {
+        "id": "b10fce93e11b42c1a91ebd3ec2d0a8e0",
+        "name": "right"
+      },
+      "target": {
+        "id": "aaaf99346754496a837252461e4b5c50",
+        "name": "bottom-1"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "3a558672e7e84be589a9f4614f5c8913",
+      "name": "e",
+      "src": {
+        "id": "aaaf99346754496a837252461e4b5c50",
+        "name": "bottom-1"
+      },
+      "target": {
+        "id": "5be2eb390ec4458e9b33082a442db6e0",
+        "name": "bottom-2"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "a8a322baa7964893a1c16c0632e33e37",
+      "name": "r",
+      "src": {
+        "id": "5be2eb390ec4458e9b33082a442db6e0",
+        "name": "bottom-2"
+      },
+      "target": {
+        "id": "f9a6663f25344329940cb6b8ef49f197",
+        "name": "inner-3"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "039f89e8c25c420398fe50a63a02955f",
+      "name": "t",
+      "src": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "target": {
+        "id": "0eb6b55fbde748f28b4e60c35b411193",
+        "name": "inner-1"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "f74b30b5f8bb4e80b62b81163aff0f74",
+      "name": "y",
+      "src": {
+        "id": "0eb6b55fbde748f28b4e60c35b411193",
+        "name": "inner-1"
+      },
+      "target": {
+        "id": "370d182bde3a4c1a91d2e577a7253270",
+        "name": "inner-2"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "f36ba9b1ba3645ae902503008ba7f54d",
+      "name": "u",
+      "src": {
+        "id": "370d182bde3a4c1a91d2e577a7253270",
+        "name": "inner-2"
+      },
+      "target": {
+        "id": "f9a6663f25344329940cb6b8ef49f197",
+        "name": "inner-3"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "f2272cf8416b43dc8fb147f9ae545a17",
+      "name": "qqqqqqq",
+      "children": [],
+      "links": [
+        {
+          "id": "578c56cfbccf43ed9f75997ac5b298b6",
+          "name": "s"
+        },
+        {
+          "id": "eb394cdd63b64cecacd2427709fae819",
+          "name": "a"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 417.4861111111111,
+          "y": 479.39814814814815
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 567.4861111111111,
+          "y": 529.3981481481482
+        },
+        "x": 417.4861111111111,
+        "y": 479.39814814814815,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "cdbbe87e9ce643a987b75abb838da2bb",
+      "name": "wwwww",
+      "children": [],
+      "links": [
+        {
+          "id": "7ac69eab8c354e3bb59a6976e7b04b63",
+          "name": "d"
+        },
+        {
+          "id": "578c56cfbccf43ed9f75997ac5b298b6",
+          "name": "s"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 773.1944444444445,
+          "y": 480.75
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 923.1944444444445,
+          "y": 530.75
+        },
+        "x": 773.1944444444445,
+        "y": 480.75,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "02bad08ea87d4145b2917503efb40a1d",
+      "name": "eeeeee",
+      "children": [],
+      "links": [
+        {
+          "id": "324ddf4aef5a46259294e9f275476dda",
+          "name": "f"
+        },
+        {
+          "id": "7ac69eab8c354e3bb59a6976e7b04b63",
+          "name": "d"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1220.3703703703702,
+          "y": 477.87962962962956
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1370.3703703703702,
+          "y": 527.8796296296296
+        },
+        "x": 1220.3703703703702,
+        "y": 477.87962962962956,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "eb394cdd63b64cecacd2427709fae819",
+      "name": "a",
+      "src": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "target": {
+        "id": "f2272cf8416b43dc8fb147f9ae545a17",
+        "name": "qqqqqqq"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "578c56cfbccf43ed9f75997ac5b298b6",
+      "name": "s",
+      "src": {
+        "id": "f2272cf8416b43dc8fb147f9ae545a17",
+        "name": "qqqqqqq"
+      },
+      "target": {
+        "id": "cdbbe87e9ce643a987b75abb838da2bb",
+        "name": "wwwww"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "7ac69eab8c354e3bb59a6976e7b04b63",
+      "name": "d",
+      "src": {
+        "id": "cdbbe87e9ce643a987b75abb838da2bb",
+        "name": "wwwww"
+      },
+      "target": {
+        "id": "02bad08ea87d4145b2917503efb40a1d",
+        "name": "eeeeee"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "324ddf4aef5a46259294e9f275476dda",
+      "name": "f",
+      "src": {
+        "id": "02bad08ea87d4145b2917503efb40a1d",
+        "name": "eeeeee"
+      },
+      "target": {
+        "id": "f9a6663f25344329940cb6b8ef49f197",
+        "name": "inner-3"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "ac1fffe8755648e284d059be04af8991",
+      "name": "bottom",
+      "children": [
+        {
+          "id": "2db342ff32c146b1b154e2332fac6433",
+          "name": "bottom-4"
+        },
+        {
+          "id": "56dcc0af2881496298fd9a3889635be6",
+          "name": "bottom-5"
+        },
+        {
+          "id": "03623df5998443619f190e83107fdadf",
+          "name": "bottom-6"
+        }
+      ],
+      "links": [],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 357.0231958672426,
+          "y": 626.2806659434953
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1505.1082945914927,
+          "y": 864.36860098652
+        },
+        "x": 357.0231958672426,
+        "y": 626.2806659434953,
+        "w": 1148.0850987242502,
+        "h": 238.0879350430248
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "e73087dcee8f4768a2f86fadd0c3cf8d",
+      "name": "z",
+      "src": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "target": {
+        "id": "2db342ff32c146b1b154e2332fac6433",
+        "name": "bottom-4"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 105.38820301783261,
+          "y": 106.00548696844987
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 105.38820301783261,
+          "y": 106.00548696844987
+        },
+        "x": 105.38820301783261,
+        "y": 106.00548696844987,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "d0d382f6c99b4a0fb21e282f0c7fd2a3",
+      "name": "x",
+      "src": {
+        "id": "2db342ff32c146b1b154e2332fac6433",
+        "name": "bottom-4"
+      },
+      "target": {
+        "id": "56dcc0af2881496298fd9a3889635be6",
+        "name": "bottom-5"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "d814f07bc24a436a8421fa16a477c5a9",
+      "name": "c",
+      "src": {
+        "id": "56dcc0af2881496298fd9a3889635be6",
+        "name": "bottom-5"
+      },
+      "target": {
+        "id": "03623df5998443619f190e83107fdadf",
+        "name": "bottom-6"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "1c3f37ee7c5543fcac9af1e7896e3bc1",
+      "name": "v",
+      "src": {
+        "id": "03623df5998443619f190e83107fdadf",
+        "name": "bottom-6"
+      },
+      "target": {
+        "id": "f9a6663f25344329940cb6b8ef49f197",
+        "name": "inner-3"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "fb3c3fff04b14494ab2cf44293e56f1b",
+      "name": "extr_left",
+      "children": [],
+      "links": [
+        {
+          "id": "84f98d87da8d4c2cbea9f23cb10fe1b1",
+          "name": "aa"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": -511.4259259259259,
+          "y": 396.74999999999994
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": -361.4259259259259,
+          "y": 446.74999999999994
+        },
+        "x": -511.4259259259259,
+        "y": 396.74999999999994,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "84f98d87da8d4c2cbea9f23cb10fe1b1",
+      "name": "aa",
+      "src": {
+        "id": "fb3c3fff04b14494ab2cf44293e56f1b",
+        "name": "extr_left"
+      },
+      "target": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    }
+  ],
+  "index": [
+    {
+      "class": "BoxDrawable",
+      "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+      "name": "left",
+      "children": [],
+      "links": [
+        {
+          "id": "b98a393fb4c64c1692bff907817ca386",
+          "name": "q"
+        },
+        {
+          "id": "039f89e8c25c420398fe50a63a02955f",
+          "name": "t"
+        },
+        {
+          "id": "84f98d87da8d4c2cbea9f23cb10fe1b1",
+          "name": "aa"
+        },
+        {
+          "id": "eb394cdd63b64cecacd2427709fae819",
+          "name": "a"
+        },
+        {
+          "id": "e73087dcee8f4768a2f86fadd0c3cf8d",
+          "name": "z"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": -96.60728419617888,
+          "y": 395.833584292894
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 53.39271580382112,
+          "y": 445.833584292894
+        },
+        "x": -96.60728419617888,
+        "y": 395.833584292894,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "4522df9d70604fc69e91acd881c9e61e",
+      "name": "top",
+      "children": [
+        {
+          "id": "b10fce93e11b42c1a91ebd3ec2d0a8e0",
+          "name": "right"
+        },
+        {
+          "id": "aaaf99346754496a837252461e4b5c50",
+          "name": "bottom-1"
+        },
+        {
+          "id": "5be2eb390ec4458e9b33082a442db6e0",
+          "name": "bottom-2"
+        }
+      ],
+      "links": [],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 371.90625,
+          "y": 39.48828125
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1352.1063368055557,
+          "y": 259.9140625
+        },
+        "x": 371.90625,
+        "y": 39.48828125,
+        "w": 980.2000868055557,
+        "h": 220.42578125
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "b10fce93e11b42c1a91ebd3ec2d0a8e0",
+      "name": "right",
+      "children": [],
+      "links": [
+        {
+          "id": "b98a393fb4c64c1692bff907817ca386",
+          "name": "q"
+        },
+        {
+          "id": "f9b77222c260426ca1dad50d0cfbc631",
+          "name": "w"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 421.90625,
+          "y": 94.9140625
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 571.90625,
+          "y": 144.9140625
+        },
+        "x": 421.90625,
+        "y": 94.9140625,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "aaaf99346754496a837252461e4b5c50",
+      "name": "bottom-1",
+      "children": [],
+      "links": [
+        {
+          "id": "f9b77222c260426ca1dad50d0cfbc631",
+          "name": "w"
+        },
+        {
+          "id": "3a558672e7e84be589a9f4614f5c8913",
+          "name": "e"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 739.140625,
+          "y": 89.48828125
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 889.140625,
+          "y": 139.48828125
+        },
+        "x": 739.140625,
+        "y": 89.48828125,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "5be2eb390ec4458e9b33082a442db6e0",
+      "name": "bottom-2",
+      "children": [],
+      "links": [
+        {
+          "id": "3a558672e7e84be589a9f4614f5c8913",
+          "name": "e"
+        },
+        {
+          "id": "a8a322baa7964893a1c16c0632e33e37",
+          "name": "r"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1102.1063368055557,
+          "y": 93.97873263888889
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1252.1063368055557,
+          "y": 143.97873263888889
+        },
+        "x": 1102.1063368055557,
+        "y": 93.97873263888889,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "0eb6b55fbde748f28b4e60c35b411193",
+      "name": "inner-1",
+      "children": [],
+      "links": [
+        {
+          "id": "039f89e8c25c420398fe50a63a02955f",
+          "name": "t"
+        },
+        {
+          "id": "f74b30b5f8bb4e80b62b81163aff0f74",
+          "name": "y"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 412.2090816028886,
+          "y": 325.1229083977804
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 562.2090816028885,
+          "y": 375.1229083977804
+        },
+        "x": 412.2090816028886,
+        "y": 325.1229083977804,
+        "w": 149.99999999999994,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "370d182bde3a4c1a91d2e577a7253270",
+      "name": "inner-2",
+      "children": [],
+      "links": [
+        {
+          "id": "f74b30b5f8bb4e80b62b81163aff0f74",
+          "name": "y"
+        },
+        {
+          "id": "f36ba9b1ba3645ae902503008ba7f54d",
+          "name": "u"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1093.9156166116263,
+          "y": 320.0606596001008
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1243.9156166116263,
+          "y": 370.0606596001008
+        },
+        "x": 1093.9156166116263,
+        "y": 320.0606596001008,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "f9a6663f25344329940cb6b8ef49f197",
+      "name": "inner-3",
+      "children": [],
+      "links": [
+        {
+          "id": "1c3f37ee7c5543fcac9af1e7896e3bc1",
+          "name": "v"
+        },
+        {
+          "id": "324ddf4aef5a46259294e9f275476dda",
+          "name": "f"
+        },
+        {
+          "id": "f36ba9b1ba3645ae902503008ba7f54d",
+          "name": "u"
+        },
+        {
+          "id": "a8a322baa7964893a1c16c0632e33e37",
+          "name": "r"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1756.4351221600714,
+          "y": 352.7838152624347
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1906.4351221600714,
+          "y": 402.7838152624347
+        },
+        "x": 1756.4351221600714,
+        "y": 352.7838152624347,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "b98a393fb4c64c1692bff907817ca386",
+      "name": "q",
+      "src": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "target": {
+        "id": "b10fce93e11b42c1a91ebd3ec2d0a8e0",
+        "name": "right"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "f9b77222c260426ca1dad50d0cfbc631",
+      "name": "w",
+      "src": {
+        "id": "b10fce93e11b42c1a91ebd3ec2d0a8e0",
+        "name": "right"
+      },
+      "target": {
+        "id": "aaaf99346754496a837252461e4b5c50",
+        "name": "bottom-1"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "3a558672e7e84be589a9f4614f5c8913",
+      "name": "e",
+      "src": {
+        "id": "aaaf99346754496a837252461e4b5c50",
+        "name": "bottom-1"
+      },
+      "target": {
+        "id": "5be2eb390ec4458e9b33082a442db6e0",
+        "name": "bottom-2"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "a8a322baa7964893a1c16c0632e33e37",
+      "name": "r",
+      "src": {
+        "id": "5be2eb390ec4458e9b33082a442db6e0",
+        "name": "bottom-2"
+      },
+      "target": {
+        "id": "f9a6663f25344329940cb6b8ef49f197",
+        "name": "inner-3"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "039f89e8c25c420398fe50a63a02955f",
+      "name": "t",
+      "src": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "target": {
+        "id": "0eb6b55fbde748f28b4e60c35b411193",
+        "name": "inner-1"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "f74b30b5f8bb4e80b62b81163aff0f74",
+      "name": "y",
+      "src": {
+        "id": "0eb6b55fbde748f28b4e60c35b411193",
+        "name": "inner-1"
+      },
+      "target": {
+        "id": "370d182bde3a4c1a91d2e577a7253270",
+        "name": "inner-2"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "f36ba9b1ba3645ae902503008ba7f54d",
+      "name": "u",
+      "src": {
+        "id": "370d182bde3a4c1a91d2e577a7253270",
+        "name": "inner-2"
+      },
+      "target": {
+        "id": "f9a6663f25344329940cb6b8ef49f197",
+        "name": "inner-3"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "f2272cf8416b43dc8fb147f9ae545a17",
+      "name": "qqqqqqq",
+      "children": [],
+      "links": [
+        {
+          "id": "578c56cfbccf43ed9f75997ac5b298b6",
+          "name": "s"
+        },
+        {
+          "id": "eb394cdd63b64cecacd2427709fae819",
+          "name": "a"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 417.4861111111111,
+          "y": 479.39814814814815
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 567.4861111111111,
+          "y": 529.3981481481482
+        },
+        "x": 417.4861111111111,
+        "y": 479.39814814814815,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "cdbbe87e9ce643a987b75abb838da2bb",
+      "name": "wwwww",
+      "children": [],
+      "links": [
+        {
+          "id": "7ac69eab8c354e3bb59a6976e7b04b63",
+          "name": "d"
+        },
+        {
+          "id": "578c56cfbccf43ed9f75997ac5b298b6",
+          "name": "s"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 773.1944444444445,
+          "y": 480.75
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 923.1944444444445,
+          "y": 530.75
+        },
+        "x": 773.1944444444445,
+        "y": 480.75,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "02bad08ea87d4145b2917503efb40a1d",
+      "name": "eeeeee",
+      "children": [],
+      "links": [
+        {
+          "id": "324ddf4aef5a46259294e9f275476dda",
+          "name": "f"
+        },
+        {
+          "id": "7ac69eab8c354e3bb59a6976e7b04b63",
+          "name": "d"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1220.3703703703702,
+          "y": 477.87962962962956
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1370.3703703703702,
+          "y": 527.8796296296296
+        },
+        "x": 1220.3703703703702,
+        "y": 477.87962962962956,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "eb394cdd63b64cecacd2427709fae819",
+      "name": "a",
+      "src": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "target": {
+        "id": "f2272cf8416b43dc8fb147f9ae545a17",
+        "name": "qqqqqqq"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "578c56cfbccf43ed9f75997ac5b298b6",
+      "name": "s",
+      "src": {
+        "id": "f2272cf8416b43dc8fb147f9ae545a17",
+        "name": "qqqqqqq"
+      },
+      "target": {
+        "id": "cdbbe87e9ce643a987b75abb838da2bb",
+        "name": "wwwww"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "7ac69eab8c354e3bb59a6976e7b04b63",
+      "name": "d",
+      "src": {
+        "id": "cdbbe87e9ce643a987b75abb838da2bb",
+        "name": "wwwww"
+      },
+      "target": {
+        "id": "02bad08ea87d4145b2917503efb40a1d",
+        "name": "eeeeee"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "324ddf4aef5a46259294e9f275476dda",
+      "name": "f",
+      "src": {
+        "id": "02bad08ea87d4145b2917503efb40a1d",
+        "name": "eeeeee"
+      },
+      "target": {
+        "id": "f9a6663f25344329940cb6b8ef49f197",
+        "name": "inner-3"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "ac1fffe8755648e284d059be04af8991",
+      "name": "bottom",
+      "children": [
+        {
+          "id": "2db342ff32c146b1b154e2332fac6433",
+          "name": "bottom-4"
+        },
+        {
+          "id": "56dcc0af2881496298fd9a3889635be6",
+          "name": "bottom-5"
+        },
+        {
+          "id": "03623df5998443619f190e83107fdadf",
+          "name": "bottom-6"
+        }
+      ],
+      "links": [],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 357.0231958672426,
+          "y": 626.2806659434953
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1505.1082945914927,
+          "y": 864.36860098652
+        },
+        "x": 357.0231958672426,
+        "y": 626.2806659434953,
+        "w": 1148.0850987242502,
+        "h": 238.0879350430248
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "2db342ff32c146b1b154e2332fac6433",
+      "name": "bottom-4",
+      "children": [],
+      "links": [
+        {
+          "id": "d0d382f6c99b4a0fb21e282f0c7fd2a3",
+          "name": "x"
+        },
+        {
+          "id": "e73087dcee8f4768a2f86fadd0c3cf8d",
+          "name": "z"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 407.0231958672426,
+          "y": 676.2806659434953
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 557.0231958672425,
+          "y": 726.2806659434953
+        },
+        "x": 407.0231958672426,
+        "y": 676.2806659434953,
+        "w": 149.99999999999994,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "56dcc0af2881496298fd9a3889635be6",
+      "name": "bottom-5",
+      "children": [],
+      "links": [
+        {
+          "id": "d814f07bc24a436a8421fa16a477c5a9",
+          "name": "c"
+        },
+        {
+          "id": "d0d382f6c99b4a0fb21e282f0c7fd2a3",
+          "name": "x"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 825.5168006537461,
+          "y": 699.36860098652
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 975.5168006537461,
+          "y": 749.36860098652
+        },
+        "x": 825.5168006537461,
+        "y": 699.36860098652,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "03623df5998443619f190e83107fdadf",
+      "name": "bottom-6",
+      "children": [],
+      "links": [
+        {
+          "id": "1c3f37ee7c5543fcac9af1e7896e3bc1",
+          "name": "v"
+        },
+        {
+          "id": "d814f07bc24a436a8421fa16a477c5a9",
+          "name": "c"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 1255.1082945914927,
+          "y": 677.7991347392602
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 1405.1082945914927,
+          "y": 727.7991347392602
+        },
+        "x": 1255.1082945914927,
+        "y": 677.7991347392602,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "e73087dcee8f4768a2f86fadd0c3cf8d",
+      "name": "z",
+      "src": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "target": {
+        "id": "2db342ff32c146b1b154e2332fac6433",
+        "name": "bottom-4"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 105.38820301783261,
+          "y": 106.00548696844987
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 105.38820301783261,
+          "y": 106.00548696844987
+        },
+        "x": 105.38820301783261,
+        "y": 106.00548696844987,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "d0d382f6c99b4a0fb21e282f0c7fd2a3",
+      "name": "x",
+      "src": {
+        "id": "2db342ff32c146b1b154e2332fac6433",
+        "name": "bottom-4"
+      },
+      "target": {
+        "id": "56dcc0af2881496298fd9a3889635be6",
+        "name": "bottom-5"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "d814f07bc24a436a8421fa16a477c5a9",
+      "name": "c",
+      "src": {
+        "id": "56dcc0af2881496298fd9a3889635be6",
+        "name": "bottom-5"
+      },
+      "target": {
+        "id": "03623df5998443619f190e83107fdadf",
+        "name": "bottom-6"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "1c3f37ee7c5543fcac9af1e7896e3bc1",
+      "name": "v",
+      "src": {
+        "id": "03623df5998443619f190e83107fdadf",
+        "name": "bottom-6"
+      },
+      "target": {
+        "id": "f9a6663f25344329940cb6b8ef49f197",
+        "name": "inner-3"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    },
+    {
+      "class": "BoxDrawable",
+      "id": "fb3c3fff04b14494ab2cf44293e56f1b",
+      "name": "extr_left",
+      "children": [],
+      "links": [
+        {
+          "id": "84f98d87da8d4c2cbea9f23cb10fe1b1",
+          "name": "aa"
+        }
+      ],
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": -511.4259259259259,
+          "y": 396.74999999999994
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": -361.4259259259259,
+          "y": 446.74999999999994
+        },
+        "x": -511.4259259259259,
+        "y": 396.74999999999994,
+        "w": 150.0,
+        "h": 50.0
+      }
+    },
+    {
+      "class": "LinkDrawable",
+      "id": "84f98d87da8d4c2cbea9f23cb10fe1b1",
+      "name": "aa",
+      "src": {
+        "id": "fb3c3fff04b14494ab2cf44293e56f1b",
+        "name": "extr_left"
+      },
+      "target": {
+        "id": "1826d7cf63ff4bfc9fabf1a9f685ac59",
+        "name": "left"
+      },
+      "rect": {
+        "class": "QRectF",
+        "topLeft": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "bottomRight": {
+          "class": "QPointF",
+          "x": 0.0,
+          "y": 0.0
+        },
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.0,
+        "h": 0.0
+      }
+    }
+  ]
+}
