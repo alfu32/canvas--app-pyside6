@@ -44,36 +44,34 @@ class ModelDrawable(Drawable):
 
     def find_drawables_inside(self, rect: QRectF) -> List[Drawable]:
         """
-        Finds all drawables that are **completely contained** within the given rectangle.
+        Finds result drawables that are **completely contained** within the given rectangle.
         """
-        all = []
+        result = []
         for d in self.drawables:
             if rect.contains(d.get_rect()) or len(d.get_hotspots()) == len(
                 [hs for hs in d.get_hotspots() if rect.contains(hs.point)]):
-                all.append(d)
+                result.append(d)
             for child in d.find_drawables_inside(rect):
-                all.append(child)
-        return all
+                result.append(child)
+        return result
 
     def find_drawables_crossing(self, rect: QRectF) -> List[Drawable]:
         """
         Finds all drawables that **partially overlap** (intersect) with the given rectangle.
         """
-        all = []
+        result = []
         for d in self.drawables:
             if rect.intersects(d.get_rect()) or rect.contains(d.get_rect()) or [hs for hs in d.get_hotspots() if rect.contains(hs.point)]:
-                all.append(d)
+                result.append(d)
             for child in d.find_drawables_inside(rect):
-                all.append(child)
-        return all
+                result.append(child)
+        return result
 
     def get_all_linear(self):
-        all = []
-        for d in self.drawables:
-            all.append(d)
-            for child in d.children:
-                all.append(child)
-        return all
+        result = []
+        for d in self.get_tree().values():
+            result.append(d)
+        return result
 
     def get_tree(self,parent:str = None):
         tree = {}
@@ -93,37 +91,39 @@ class ModelDrawable(Drawable):
             index[item["id"]]=item
             if item["class"] == "BoxDrawable":
                 print(item["rect"])
+                bx=item["rect"]["x"]
+                by=item["rect"]["y"]
+                bw=item["rect"]["w"]
+                bh=item["rect"]["h"]
                 index[item["id"]] = BoxDrawable(
                     QRectF(
                         QPointF(
-                            item["rect"]["topLeft"]["x"],
-                            item["rect"]["topLeft"]["y"]
+                            bx,
+                            by,
                         ),
                         QPointF(
-                            item["rect"]["bottomRight"]["x"],
-                            item["rect"]["bottomRight"]["y"]
+                            bx+150.0,
+                            by+50.0,
                         )
-                    ),{}
+                    ),item.get("metadata",{})
                 )
                 index[item["id"]].name=item["name"]
         for item in data["index"]:
+            if item["class"] == "BoxDrawable":
+                for child_ref in item["children"]:
+                    index[item["id"]].add_child(index[child_ref["id"]])
             if item["class"] == "LinkDrawable":
                 box1:BoxDrawable = index[item["src"]["id"]]
                 box2:BoxDrawable = index[item["target"]["id"]]
                 link = LinkDrawable(
                     box1,
                     box2,
-                    {}
+                    item.get("metadata",{})
                 )
                 link.name = item["name"]
                 box1.add_link(link)
                 box2.add_link(link)
                 index[item["id"]] = link
-        for item in data["index"]:
-            if item["class"] == "BoxDrawable":
-                it=index[item["id"]]
-                for childref in item["children"]:
-                    it.add_child(index[childref["id"]])
         print(index)
         drawables = []
         for item in data["struct"]:

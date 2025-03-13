@@ -43,7 +43,7 @@ class Drawable:
     def toMap(self) -> dict[str,any]:
         links=[link.toRef() for link in self.links]
         children=[child.toRef() for child in self.children]
-        rect = self.get_rect()
+        rect = self.get_rect() if len(self.children)>0 else self.rect
         map = {
             "id":self.id,
             "name":self.name,
@@ -147,11 +147,12 @@ class Drawable:
 
 class HotSpot(Drawable):
 
-    def __init__(self, point: QPointF, parent: Drawable, onclick):
+    def __init__(self, kind:str, point: QPointF, parent: Drawable, onclick):
         super().__init__()
         self.point = point
         self.onclick = onclick
         self.parent = parent
+        self.kind = ""
 
     def draw(self,painter: QPainter, model:ModelDrawable,canvas:'CanvasQWidget'):
         """
@@ -320,10 +321,10 @@ class BoxDrawable(Drawable):
     def get_hotspots(self) -> list[HotSpot]:
         rect = self.get_rect()
         return [
-            HotSpot(rect.topLeft(),self,None ),
-            HotSpot(rect.topRight(),self, None ),
-            HotSpot(rect.bottomRight(),self, None ),
-            HotSpot(rect.bottomLeft(),self, None ),
+            HotSpot("BoxDrawable.topLeft",rect.topLeft(),self,None ),
+            HotSpot("BoxDrawable.topRight",rect.topRight(),self, None ),
+            HotSpot("BoxDrawable.bottomRight",rect.bottomRight(),self, None ),
+            HotSpot("BoxDrawable.bottomLeft",rect.bottomLeft(),self, None ),
         ]
 
     def add_link(self, link: 'LinkDrawable'):
@@ -419,7 +420,7 @@ class BoxDrawable(Drawable):
             return 0
 
     def toMap(self):
-        rect = self.get_rect()
+        rect = self.get_rect() if len(self.children)>0 else self.rect
         # Convert the object to a dict (customize as needed)
         return {
             "class": "BoxDrawable",
@@ -481,8 +482,8 @@ class LinkDrawable(Drawable):
 
     def get_hotspots(self) -> list[HotSpot]:
         return [
-            HotSpot(self.box1.get_rect().topRight() + QPointF(0, 25 + self.box1.get_outgoing_order(self) * 15),self,None),
-            HotSpot(self.box2.get_rect().topLeft() + QPointF(0, 25 + self.box2.get_incoming_order(self) * 15),self,None),
+            HotSpot("LinkDrawable.source",self.box1.get_rect().topRight() + QPointF(0, 25 + self.box1.get_outgoing_order(self) * 15),self,None),
+            HotSpot("LinkDrawable.target",self.box2.get_rect().topLeft() + QPointF(0, 25 + self.box2.get_incoming_order(self) * 15),self,None),
         ]
 
     def contains(self, point: QPointF) -> bool:

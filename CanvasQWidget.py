@@ -20,6 +20,7 @@ class CanvasQWidget(QWidget):
     last_pointer_event:CanvasPointerEvent=None
 
     hotspot_event_start:CanvasPointerEvent=None
+    hotspot_event_start_hostspot:'HotSpot'=None
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -152,6 +153,7 @@ class CanvasQWidget(QWidget):
                     if self.hotspot_event_start is None:
                         print(f"hotspot click started")
                         self.hotspot_event_start=cpe
+                        self.hotspot_event_start_hostspot=hs
                         for sel in self.model.selection:
                             sel.anchor = sel.rect.topLeft()
                         return
@@ -161,6 +163,7 @@ class CanvasQWidget(QWidget):
         else:
             print(f"hotspot click ended")
             self.hotspot_event_start = None
+            self.hotspot_event_start_hostspot = None
             for sel in self.model.selection:
                 sel.anchor=None
 
@@ -171,6 +174,9 @@ class CanvasQWidget(QWidget):
             self.pointerMove.emit(cpe)
             super().mouseMoveEvent(event)
         else:
+            hs:'HotSpot'=self.hotspot_event_start_hostspot
+            print(hs.kind)
+            # if hs.kind == "BoxDrawable.topLeft":
             delta = cpe.modelPoint - self.hotspot_event_start.modelPoint
             # print(f"hotspot action move {delta}")
             for sel in self.model.selection:
