@@ -95,19 +95,12 @@ class ModelDrawable(Drawable):
                 by=item["rect"]["y"]
                 bw=item["rect"]["w"]
                 bh=item["rect"]["h"]
-                index[item["id"]] = BoxDrawable(
-                    QRectF(
-                        QPointF(
-                            bx,
-                            by,
-                        ),
-                        QPointF(
-                            bx+150.0,
-                            by+50.0,
-                        )
-                    ),item.get("metadata",{})
-                )
-                index[item["id"]].name=item["name"]
+                box = BoxDrawable(
+                    QRectF(QPointF(bx,by),QPointF(bx+150,by+50)),item.get("metadata",{})
+                ) if len(item.get("children",[])) == 0 else BoxDrawable(QRectF(QPointF(),QPointF()),item.get("metadata",{}))
+                box.id=item["id"]
+                box.name=item["name"]
+                index[item["id"]]=box
         for item in data["index"]:
             if item["class"] == "BoxDrawable":
                 for child_ref in item["children"]:
@@ -121,6 +114,7 @@ class ModelDrawable(Drawable):
                     item.get("metadata",{})
                 )
                 link.name = item["name"]
+                link.id = item["id"]
                 box1.add_link(link)
                 box2.add_link(link)
                 index[item["id"]] = link

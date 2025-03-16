@@ -43,7 +43,7 @@ class Drawable:
     def toMap(self) -> dict[str,any]:
         links=[link.toRef() for link in self.links]
         children=[child.toRef() for child in self.children]
-        rect = self.get_rect() if len(self.children)>0 else self.rect
+        rct = self.get_rect() if len(self.children)>0 else self.rect
         map = {
             "id":self.id,
             "name":self.name,
@@ -52,14 +52,15 @@ class Drawable:
             "links":links,
             "rect":{
                 "class":"QRectF",
-                "topLeft":rect.topLeft(),
-                "bottomRight":rect.bottomRight(),
-                "x":rect.topLeft().x(),
-                "y":rect.topLeft().y(),
-                "w":rect.bottomRight().x() - rect.topLeft().x(),
-                "h":rect.bottomRight().y() - rect.topLeft().y(),
+                "topLeft":rct.topLeft(),
+                "bottomRight":rct.bottomRight(),
+                "x":rct.topLeft().x(),
+                "y":rct.topLeft().y(),
+                "w":rct.bottomRight().x() - rct.topLeft().x(),
+                "h":rct.bottomRight().y() - rct.topLeft().y(),
             }
         }
+        return map
 
     def get_rect(self) -> QRectF:
         calcY = max(
@@ -531,7 +532,7 @@ class LinkDrawable(Drawable):
         return f"""Link:{{source:{self.box1},target:{self.box2},name:{self.name},id:{self.id} }}"""
 
     def toMap(self) -> dict[str,any]:
-        rect=self.rect
+        rct=self.rect
         # Convert the object to a dict (customize as needed)
         return {
             "class": "LinkDrawable",
@@ -541,11 +542,11 @@ class LinkDrawable(Drawable):
             "target": self.box2.toRef(),
             "rect":{
                 "class":"QRectF",
-                "topLeft":rect.topLeft(),
-                "bottomRight":rect.bottomRight(),
-                "x":rect.topLeft().x(),
-                "y":rect.topLeft().y(),
-                "w":rect.bottomRight().x() - rect.topLeft().x(),
-                "h":rect.bottomRight().y() - rect.topLeft().y(),
+                "topLeft":rct.topLeft(),
+                "bottomRight":rct.bottomRight(),
+                "x":rct.topLeft().x(),
+                "y":rct.topLeft().y(),
+                "w":rct.bottomRight().x() - rct.topLeft().x(),
+                "h":rct.bottomRight().y() - rct.topLeft().y(),
             }
         }
